@@ -5,12 +5,12 @@
 | **Parameter**   |**Description**|**ValueType**|
 |-----------------|---------------|-------------|
 | **Root**        | Returns the root of the tree.|`TreeNode<T>`|
-| **IndexingType**| Returns trees TreeTraversalType.|`TreeTraversalType`|
-| **Comparator**  | Returns trees Comparator.|`Comparator<T>`|
+| **IndexingType**| Returns tree`s TreeTraversalType.|`TreeTraversalType`|
+| **Comparator**  | Returns tree`s Comparator.|`Comparator<T>`|
 | **Height**      | Returns Height of the tree.|`int32`|
-| **LeafCount**   | Returns trees leaf nodes count.|`int32`|
-| **Levels**      | Returns trees level count.|`int32`|
-| **Count**       | Returns trees overall value count.|`int32`|
+| **LeafCount**   | Returns tree`s leaf nodes count.|`int32`|
+| **Levels**      | Returns tree`s level count.|`int32`|
+| **Count**       | Returns tree`s overall value count.|`int32`|
 | **IsBST**       | Returns if tree is valid.|`bool`|
 | **IsEmpty**     | Returns if tree is empty.|`bool`|
 | **[int index]** | Returns value T from the tree at the specified index.|`T`|
