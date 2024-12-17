@@ -7,7 +7,7 @@
   #### Interface Implementations Parameters
   | **Interface Parameter**            |**Description**|**MethodType**|
   |--------------------------|---------------|--------------|
-  | **[IDataTree<T>.Root](#idataTreeTroot)**  | Returns the root of the tree.|[`TreeNode<T>?`](#treenodet)|
+  | **[IDataTree<T>.Root](#idataTreeTroot)** | Returns the root of the tree.|[`TreeNode<T>?`](#treenodet)|
   | **IDataTree<T>.IndexingType**| Returns tree`s TreeTraversalType.|`TreeTraversalType`|
   | **IDataTree<T>.Comparator**  | Returns tree`s Comparator.|[`Comparer<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.icomparer?view=net-9.0)|
   | **IDataTree<T>.Height**      | Returns Height of the tree.|`int32`|
