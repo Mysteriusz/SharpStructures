@@ -14,7 +14,7 @@
   #### Interface Parameter Implementations
   | **Interface**            |**Parameter**|**Description**|**MethodType**|
   |--------------------------|-------------|---------------|--------------|
-  | **IDataTree<T>**          |`Root`       | Returns the root of the tree.|[`TreeNode<T>?`](#treenodet)|
+  | **IDataTree<T>**          |`Root`       | Returns the root of the tree.|[`TreeNode<T>?`](#treenode)|
   | **IDataTree<T>**          |`TraversalType`| Returns tree's TreeTraversalType.|`TreeTraversalType`|
   | **IDataTree<T>**          |`Comparator` | Returns tree's Comparator.|[`Comparer<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.icomparer?view=net-9.0)|
   | **IDataTree<T>**          |`Height`     | Returns Height of the tree.|`int32`|
@@ -38,13 +38,13 @@
   | **IDataTree<T>**          |`Clone()`                  | Creates a copy of the current instance of the tree.|[`IDataTree<T>`](#idataTree-t)|
   | **IDataTree<T>**          |`GetIndexValue(int index)` | Returns a value at a specified index using the current traversal type.|`T`|
   | **IDataTree<T>**          |`Max()`                    | Returns the maximum value in the tree.           |`T`          |
-  | **IDataTree<T>**          |`Max(TreeNode<T> node)`    | Returns the maximum node starting from the specified node.|[`TreeNode<T>?`](#treenodet)|
+  | **IDataTree<T>**          |`Max(TreeNode<T> node)`    | Returns the maximum node starting from the specified node.|[`TreeNode<T>?`](#treenode)|
   | **IDataTree<T>**          |`Min()`                    | Returns the minimum value in the tree.           |`T`          |
-  | **IDataTree<T>**          |`Min(TreeNode<T> node)`    | Returns the minimum node starting from the specified node.|[`TreeNode<T>?`](#treenodet)|
+  | **IDataTree<T>**          |`Min(TreeNode<T> node)`    | Returns the minimum node starting from the specified node.|[`TreeNode<T>?`](#treenode)|
   | **IDataTree<T>**          |`Successor()`              | Returns the successor value of the root node.    |`T`          |
-  | **IDataTree<T>**          |`Successor(TreeNode<T> node)`| Returns the successor node of the specified node.|[`TreeNode<T>?`](#treenodet)|
+  | **IDataTree<T>**          |`Successor(TreeNode<T> node)`| Returns the successor node of the specified node.|[`TreeNode<T>?`](#treenode)|
   | **IDataTree<T>**          |`Predecessor()`            | Returns the predecessor value of the root node.  |`T`          |
-  | **IDataTree<T>**          |`Predecessor(TreeNode<T> node)`| Returns the predecessor node of the specified node.|[`TreeNode<T>?`](#treenodet)|
+  | **IDataTree<T>**          |`Predecessor(TreeNode<T> node)`| Returns the predecessor node of the specified node.|[`TreeNode<T>?`](#treenode)|
   | **IDataTree<T>**          |`GetRange(int index, int count)`| Returns a range of values as `IEnumerable<T>` from the specified index.|[`IEnumerable<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0)|
   | **IDataTree<T>**          |`Traverse()`               | Returns all values using the specified traversal method.|[`IEnumerable<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0)|
   | **IDataTree<T>**          |`InOrderTraversal()`       | Returns all values using InOrder traversal.      |[`IEnumerable<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0)|
@@ -63,6 +63,7 @@
 </details>
 
 # Structures
+<a id="treenode"></a>
 <details>
   <summary>TreeNode&lt;T&gt;</summary>
   
@@ -81,9 +82,9 @@
   | **Value**       | Returns the value of the node.|`T`|
   | **Size**        | Returns node`s subtree size.|`int32`|
   | **IsLeaf**      | Returns if node is marked as leaf.|`bool`|
-  | **Left**        | Returns left child of the node.|[`TreeNode<T>?`](#treenodet)|
-  | **Right**       | Returns right child of the node.|[`TreeNode<T>?`](#treenodet)|
-  | **Parent**      | Returns parent of the node.|[`TreeNode<T>?`](#treenodet)|
+  | **Left**        | Returns left child of the node.|[`TreeNode<T>?`](#treenode)|
+  | **Right**       | Returns right child of the node.|[`TreeNode<T>?`](#treenode)|
+  | **Parent**      | Returns parent of the node.|[`TreeNode<T>?`](#treenode)|
   #### Interface Methods Implementations 
   | **Interface**            |**Method**|**Description**|**MethodType**|
   |--------------------------|----------|---------------|--------------|
@@ -97,7 +98,7 @@
   #### Parameters
   | **Parameter**    |**Description**|**ValueType**|
   |------------------|---------------|-------------|
-  | **Root**         | Returns the root of the tree.|[`TreeNode<T>?`](#treenodet)|
+  | **Root**         | Returns the root of the tree.|[`TreeNode<T>?`](#treenode)|
   | **TraversalType**| Returns tree`s TreeTraversalType.|`TreeTraversalType`|
   | **Comparator**   | Returns tree`s Comparator.|[`Comparer<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.icomparer?view=net-9.0)|
   | **Height**       | Returns Height of the tree.|`int32`|
@@ -120,13 +121,13 @@
   | **Cloning**             |`Clone()`| Creates a copy of the current instance of the tree.|[`IDataTree<T>`](#idataTree-t)|
   | **Index Access**        |`GetIndexValue(int index)`| Returns a value at a specified index using the current traversal type.|`T`|
   | **Min/Max**             |`Max()`| Returns the maximum value in the tree.|`T`|
-  |                         |`Max(TreeNode<T> node)`| Returns the maximum node starting from the specified node.|[`TreeNode<T>?`](#treenodet)|
+  |                         |`Max(TreeNode<T> node)`| Returns the maximum node starting from the specified node.|[`TreeNode<T>?`](#treenode)|
   |                         |`Min()`| Returns the minimum value in the tree.|`T`|
-  |                         |`Min(TreeNode<T> node)`| Returns the minimum node starting from the specified node.|[`TreeNode<T>?`](#treenodet)|
+  |                         |`Min(TreeNode<T> node)`| Returns the minimum node starting from the specified node.|[`TreeNode<T>?`](#treenode)|
   | **Successor/Predecessor**|`Successor()`| Returns the successor value of the root node.|`T`|
-  |                         | `Successor(TreeNode<T> node)`| Returns the successor node of the specified node.|[`TreeNode<T>?`](#treenodet)|
+  |                         | `Successor(TreeNode<T> node)`| Returns the successor node of the specified node.|[`TreeNode<T>?`](#treenode)|
   |                         |`Predecessor()`| Returns the predecessor value of the root node.|`T`|
-  |                         |`Predecessor(TreeNode<T> node)`| Returns the predecessor node of the specified node.|[`TreeNode<T>?`](#treenodet)|
+  |                         |`Predecessor(TreeNode<T> node)`| Returns the predecessor node of the specified node.|[`TreeNode<T>?`](#treenode)|
   | **Range Access**        |`GetRange(int index, int count)`| Returns a range of values as `IEnumerable<T>` from the specified index.|[`IEnumerable<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0)|
   | **Traversal**           |`Traverse()`| Returns all values using the specified traversal method.|[`IEnumerable<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0)|
   |                         |`InOrderTraversal()`| Returns all values using InOrder traversal.|[`IEnumerable<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0)|
