@@ -3,6 +3,7 @@
   ### IDataTree<T>  
 #### Parameters
 | **Parameter**   |**Description**|
+|-----------------|---------------|
 | **Root**        | Returns the root of the tree.|
 | **IndexingType**| Returns trees TreeTraversalType.|
 | **Comparator**  | Returns trees Comparator.|
@@ -15,7 +16,7 @@
 | **[int index]** | Returns value T from the tree at the specified index.|
 #### Methods
 | **Category**            |**Method**|**Description**|
-|-------------------------|-----------|----------------|
+|-------------------------|----------|---------------|
 | **Insertion**           |`Add(T value)`| Inserts a value into the tree.|
 |                         |`AddRange(T[] values)`| Inserts an array of values into the tree.|
 | **Deletion**            |`Remove(T value)`| Removes a value from the tree.|
