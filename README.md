@@ -24,5 +24,20 @@
   - **Predecessor()**
     - **Predecessor()** Returns predecessor T of the Root node.
     - **Predecessor(TreeNode<T> node)** Returns predecessor TreeNode<T> of the specified node.
-  -
-  
+  - **GetRange(int index, int count)** Returns range of values as IEnumerable<T> from index.
+  - **Traverse()** Returns IEnumerable<T> of all values in the tree using specified in tree Parameters traversal method.
+  - **InOrderTraversal()** Returns IEnumerable<T> of all values in the tree using InOrder traversal method.
+  - **PreOrderTraversal()** Returns IEnumerable<T> of all values in the tree using PreOrder traversal method.
+  - **PostOrderTraversal()** Returns IEnumerable<T> of all values in the tree using PostOrder traversal method.
+  - **DFS(T target)** Returns IEnumerable<T> of a path from the Root to specified target value.
+   
+  - #### Conversion Methods
+  - **ToArray()** Returns <span style="color: #FF5733;">T[]</span> of all the values in the tree using TreeTraversalType.
+  - **AsEnumerable()** Returns IEnumerable<T> of all the values in the tree using TreeTraversalType.
+  - **GetEnumerator()** Returns IEnumerator<T> of all the values in the tree using TreeTraversalType.
+  - **ToLookup()** Returns ILookup<T, T> of all values in the tree using TreeTraversalType.
+  - **ToLinkedList()** Returns LinkedList<T> of all values in the tree using TreeTraversalType.
+  - **ToImmutableList()** Returns ImmutableList<T> of all values in the tree using TreeTraversalType.
+  - **ToHashSet()** Returns HashSet<T> of all values in the tree using TreeTraversalType.
+  - **ToStack()** Returns Stack<T> of all values in the tree using TreeTraversalType.
+  - **ToQueue()** Returns Queue<T> of all values in the tree using TreeTraversalType.
