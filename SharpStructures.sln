@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpStructures", "SharpStructures\SharpStructures.csproj", "{DE86D270-FBEB-48F8-83AB-EBFB09C36381}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpStructuresTesting", "SharpStructuresTesting\SharpStructuresTesting.csproj", "{E74352FE-3EA4-4853-A84B-9EDD381DF5A3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE86D270-FBEB-48F8-83AB-EBFB09C36381}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE86D270-FBEB-48F8-83AB-EBFB09C36381}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE86D270-FBEB-48F8-83AB-EBFB09C36381}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE86D270-FBEB-48F8-83AB-EBFB09C36381}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E74352FE-3EA4-4853-A84B-9EDD381DF5A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E74352FE-3EA4-4853-A84B-9EDD381DF5A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E74352FE-3EA4-4853-A84B-9EDD381DF5A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E74352FE-3EA4-4853-A84B-9EDD381DF5A3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9B338FD2-AAAA-4E48-A92A-99B5B1F0CBCB}
+	EndGlobalSection
+EndGlobal
