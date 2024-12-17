@@ -1,9 +1,30 @@
+# Trees
+  ### BinarySearchTree&lt;T&gt;
+  #### Definition
+  `public class BinarySearchTree<T> : IDataTree<T>`
+  #### Constructor
+  `public BinarySearchTree(TreeNode<T>? root = null, Comparer<T>? comparer = null, TreeTraversalType indexingType = TreeTraversalType.InOrder)`
+  #### Interface Implementations Parameters
+  | **Interface**            |**Method**|**Description**|**MethodType**|
+  |--------------------------|----------|---------------|--------------|
+  | **[IDataTree<T>.Root](#idataTreeTroot)**  | Returns the root of the tree.|[`TreeNode<T>?`](#treenodet)|
+  | **IDataTree<T>.IndexingType**| Returns tree`s TreeTraversalType.|`TreeTraversalType`|
+  | **IDataTree<T>.Comparator**  | Returns tree`s Comparator.|[`Comparer<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.icomparer?view=net-9.0)|
+  | **IDataTree<T>.Height**      | Returns Height of the tree.|`int32`|
+  | **IDataTree<T>.LeafCount**   | Returns tree`s leaf nodes count.|`int32`|
+  | **IDataTree<T>.Levels**      | Returns tree`s level count.|`int32`|
+  | **IDataTree<T>.Count**       | Returns tree`s overall value count.|`int32`|
+  | **IDataTree<T>.IsBST**       | Returns if tree is valid.|`bool`|
+  | **IDataTree<T>.IsEmpty**     | Returns if tree is empty.|`bool`|
+  | **IDataTree<T>.[int index]** | Returns value T from the tree at the specified index.|`T`|
+
+  
 # Structures
   ### TreeNode&lt;T&gt;
   #### Definition
   `public class TreeNode<T> : IDisposable`
   #### Constructor
-  `public TreeNode(T, TreeNode<T>? left, TreeNode<T>? right, TreeNode<T>? parent)`
+  `public TreeNode(T value, TreeNode<T>? left = null, TreeNode<T>? right = null, TreeNode<T>? parent = null)`
   #### Parameters
   | **Parameter**   |**Description**|**ValueType**|
   |-----------------|---------------|-------------|
