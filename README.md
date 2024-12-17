@@ -1,5 +1,4 @@
-# SharpStructures
-## Structures
+# Structures
   ### TreeNode&lt;T&gt;
   #### Definition
   `public class TreeNode<T> : IDisposable`
@@ -19,14 +18,14 @@
   |--------------------------|----------|---------------|--------------|
   | **IDisposable**          |`Dispose()`| Disposes the node and all the child nodes.|`void`|
 
-## Interfaces
+# Interfaces
   ### IDataTree<T>  
   #### Parameters
   | **Parameter**   |**Description**|**ValueType**|
   |-----------------|---------------|-------------|
-  | **Root**        | Returns the root of the tree.|`TreeNode<T>?`|
+  | **Root**        | Returns the root of the tree.|[`TreeNode<T>?`](#treenodet)|
   | **IndexingType**| Returns tree`s TreeTraversalType.|`TreeTraversalType`|
-  | **Comparator**  | Returns tree`s Comparator.|`Comparator<T>`|
+  | **Comparator**  | Returns tree`s Comparator.|[`Comparer<T>`](https://learn.microsoft.com/pl-pl/dotnet/api/system.collections.generic.comparer-1?view=net-8.0)|
   | **Height**      | Returns Height of the tree.|`int32`|
   | **LeafCount**   | Returns tree`s leaf nodes count.|`int32`|
   | **Levels**      | Returns tree`s level count.|`int32`|
