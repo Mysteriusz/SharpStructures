@@ -21,7 +21,7 @@ namespace SharpStructures.Trees
         /// <see cref="TreeTraversalType.PreOrder{T}"/>, 
         /// <see cref="TreeTraversalType.PostOrder{T}"/>).
         /// </summary>
-        public TreeTraversalType IndexingType { get; set; }
+        public TreeTraversalType TraversalType { get; set; }
 
         /// <summary>
         /// Gets or sets the <see cref="Comparer{T}"/> for comparing <see cref="IDataTree{T}"/> elements.
@@ -140,7 +140,7 @@ namespace SharpStructures.Trees
         /// <summary>
         /// Searches for an element that matches specified predicate.
         /// </summary>
-        /// <param name="predicate">The function used to evaluate each element.</param>
+        /// <param name="predicate">The function used    to evaluate each element.</param>
         /// <returns>The element that matches the predicate, or null if not found.</returns>
         public T? Find(Func<T, bool> predicate);
 
@@ -149,28 +149,28 @@ namespace SharpStructures.Trees
         /// </summary>
         /// <param name="node">Node from which the search should start.</param>
         /// <returns>The found successor <see cref="TreeNode{T}"/>, otherwise returns the node.</returns>
-        public TreeNode<T>? MaxNode(TreeNode<T>? node);
+        public TreeNode<T>? Max(TreeNode<T>? node);
 
         /// <summary>
         /// Finds minimum <see cref="TreeNode{T}"/> from the specified node.
         /// </summary>
         /// <param name="node">Node from which the search should start.</param>
         /// <returns>The found minimum <see cref="TreeNode{T}"/>, otherwise returns the node.</returns>
-        public TreeNode<T>? MinNode(TreeNode<T>? node);
+        public TreeNode<T>? Min(TreeNode<T>? node);
 
         /// <summary>
         /// Finds successor <see cref="TreeNode{T}"/> from the specified node.
         /// </summary>
         /// <param name="node">Node from which the search should start.</param>
         /// <returns>The found successor <see cref="TreeNode{T}"/>, otherwise returns the node.</returns>
-        public TreeNode<T>? SuccessorNode(TreeNode<T>? node);
+        public TreeNode<T>? Successor(TreeNode<T>? node);
 
         /// <summary>
         /// Finds predecessor <see cref="TreeNode{T}"/> from the specified node.
         /// </summary>
         /// <param name="node">Node from which the search should start.</param>
         /// <returns>The found predecessor <see cref="TreeNode{T}"/>, otherwise returns the node.</returns>
-        public TreeNode<T>? PredecessorNode(TreeNode<T>? node);
+        public TreeNode<T>? Predecessor(TreeNode<T>? node);
 
         /// <summary>
         /// Gets a <see cref="IEnumerable{T}"/> range of values starting from the specified index.
@@ -181,9 +181,9 @@ namespace SharpStructures.Trees
         public IEnumerable<T> GetRange(int index, int count);
 
         /// <summary>
-        /// Gets all values in the <see cref="IDataTree{T}"/> using the specified traversal method (TreeTraversalType).
+        /// Gets <see cref="IEnumerable{T}"/> of all values in the <see cref="IDataTree{T}"/> using the specified traversal method (<see cref="TreeTraversalType"/>).
         /// </summary>
-        /// <returns>A collection of all values in the <see cref="IDataTree{T}"/>, traversed in the specified order.</returns>
+        /// <returns>A <see cref="IEnumerable{T}"/> of all values in the <see cref="IDataTree{T}"/>, traversed in the specified order.</returns>
         public IEnumerable<T> Traverse();
 
         /// <summary>

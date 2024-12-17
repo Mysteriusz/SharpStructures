@@ -16,13 +16,13 @@ namespace SharpStructures.Trees
             else
                 throw new ArgumentNullException(nameof(comparer), "Comparer is required for types that do not implement IComparable.");
 
-            IndexingType = indexingType;
+            TraversalType = indexingType;
             Root = root;
         }
         
         // Properties
         public TreeNode<T>? Root { get; set; }
-        public TreeTraversalType IndexingType { get; set; }
+        public TreeTraversalType TraversalType { get; set; }
         public Comparer<T> Comparator { get; set; }
 
         public int Height => HeightRec(0, Root);
@@ -81,7 +81,7 @@ namespace SharpStructures.Trees
                 ShiftNodes(z, z.Left);
             else
             {
-                TreeNode<T>? y = SuccessorNode(z);
+                TreeNode<T>? y = Successor(z);
                 if (y!.Parent != z)
                 {
                     ShiftNodes(y, y.Right!);
@@ -121,7 +121,7 @@ namespace SharpStructures.Trees
             if (index >= Count)
                 throw new IndexOutOfRangeException();
 
-            switch (IndexingType)
+            switch (TraversalType)
             {
                 case TreeTraversalType.InOrder:
                     return InOrderTraversalIndexRange(Root, index, [0], 1, []).First();
@@ -152,7 +152,7 @@ namespace SharpStructures.Trees
 
         public IEnumerable<T> Traverse()
         {
-            switch (IndexingType)
+            switch (TraversalType)
             {
                 case TreeTraversalType.InOrder:
                     return InOrderTraversal();
@@ -172,7 +172,7 @@ namespace SharpStructures.Trees
             if (index + count >= Count)
                 throw new IndexOutOfRangeException();
 
-            switch (IndexingType)
+            switch (TraversalType)
             {
                 case TreeTraversalType.InOrder:
                     return InOrderTraversalIndexRange(Root, index, [0], count, []);
@@ -303,27 +303,27 @@ namespace SharpStructures.Trees
         // Generic T Return Types
         public T? Max()
         {
-            TreeNode<T>? max = MaxNode(Root);
+            TreeNode<T>? max = Max(Root);
             return max != null ? max.Value : default;
         }
         public T? Min()
         {
-            TreeNode<T>? min = MinNode(Root);
+            TreeNode<T>? min = Min(Root);
             return min != null ? min.Value : default;
         }
         public T? Successor()
         {
-            TreeNode<T>? succ = SuccessorNode(Root);
+            TreeNode<T>? succ = Successor(Root);
             return succ != null ? succ.Value : default;
         }
         public T? Predecessor()
         {
-            TreeNode<T>? pred = PredecessorNode(Root);
+            TreeNode<T>? pred = Predecessor(Root);
             return pred != null ? pred.Value : default;
         }
 
         // Main Methods
-        public TreeNode<T>? MaxNode(TreeNode<T>? node)
+        public TreeNode<T>? Max(TreeNode<T>? node)
         {
             if (node == null)
                 return null;
@@ -333,7 +333,7 @@ namespace SharpStructures.Trees
 
             return node;
         }
-        public TreeNode<T>? MinNode(TreeNode<T>? node)
+        public TreeNode<T>? Min(TreeNode<T>? node)
         {
             if (node == null) return null;
 
@@ -342,7 +342,7 @@ namespace SharpStructures.Trees
 
             return node;
         }
-        public TreeNode<T>? SuccessorNode(TreeNode<T>? node)
+        public TreeNode<T>? Successor(TreeNode<T>? node)
         {
             if (node == null)
                 return null;
@@ -350,7 +350,7 @@ namespace SharpStructures.Trees
             TreeNode<T> x = node;
 
             if (x.Right != null)
-                return MinNode(x.Right);
+                return Min(x.Right);
 
             TreeNode<T>? y = x.Parent;
             while (y != null && x == y.Right)
@@ -361,7 +361,7 @@ namespace SharpStructures.Trees
 
             return y;
         }
-        public TreeNode<T>? PredecessorNode(TreeNode<T>? node)
+        public TreeNode<T>? Predecessor(TreeNode<T>? node)
         {
             if (node == null)
                 return null;
@@ -369,7 +369,7 @@ namespace SharpStructures.Trees
             TreeNode<T> x = node;
 
             if (x.Left != null)
-                return MaxNode(x.Left);
+                return Max(x.Left);
 
             TreeNode<T>? y = x.Parent;
             while (y != null && x == y.Left)
@@ -482,9 +482,9 @@ namespace SharpStructures.Trees
             if (node == null)
                 return true;
 
-            if (node.Left != null && Comparator.Compare(MaxNode(node.Left)!.Value, node.Value) >= 0)
+            if (node.Left != null && Comparator.Compare(Max(node.Left)!.Value, node.Value) >= 0)
                 return false;
-            if (node.Right != null && Comparator.Compare(MinNode(node.Right)!.Value, node.Value) < 0)
+            if (node.Right != null && Comparator.Compare(Max(node.Right)!.Value, node.Value) < 0)
                 return false;
 
             return IsBSTRec(node.Left) && IsBSTRec(node.Right);
