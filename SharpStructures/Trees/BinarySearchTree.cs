@@ -9,14 +9,14 @@ namespace SharpStructures.Trees
     /// </summary>
     public class BinarySearchTree<T> : IDataTree<T>
     {
-        public BinarySearchTree(TreeNode<T>? root = null, Comparer<T>? comparer = null, TreeTraversalType indexingType = TreeTraversalType.InOrder) 
+        public BinarySearchTree(TreeNode<T>? root = null, Comparer<T>? comparer = null, TreeTraversalType traversalType = TreeTraversalType.InOrder) 
         {
             if (typeof(IComparable<T>).IsAssignableFrom(typeof(T)) || comparer != null)
                 Comparator = comparer ?? Comparer<T>.Default;
             else
                 throw new ArgumentNullException(nameof(comparer), "Comparer is required for types that do not implement IComparable.");
 
-            TraversalType = indexingType;
+            TraversalType = traversalType;
             Root = root;
         }
         
