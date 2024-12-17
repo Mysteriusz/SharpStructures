@@ -1,7 +1,7 @@
 # Structures
   ### TreeNode&lt;T&gt;
   #### Definition
-  `public class TreeNode<T> : IDisposable`
+  `public class TreeNode<T> : [IDisposable](https://learn.microsoft.com/en-us/dotnet/api/system.idisposable?view=net-9.0)`
   #### Constructor
   `public TreeNode(T, TreeNode<T>? left, TreeNode<T>? right, TreeNode<T>? parent)`
   #### Parameters
@@ -25,7 +25,7 @@
   |-----------------|---------------|-------------|
   | **Root**        | Returns the root of the tree.|[`TreeNode<T>?`](#treenodet)|
   | **IndexingType**| Returns tree`s TreeTraversalType.|`TreeTraversalType`|
-  | **Comparator**  | Returns tree`s Comparator.|[`Comparer<T>`](https://learn.microsoft.com/pl-pl/dotnet/api/system.collections.generic.comparer-1?view=net-8.0)|
+  | **Comparator**  | Returns tree`s Comparator.|[`Comparer<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.icomparer?view=net-9.0)|
   | **Height**      | Returns Height of the tree.|`int32`|
   | **LeafCount**   | Returns tree`s leaf nodes count.|`int32`|
   | **Levels**      | Returns tree`s level count.|`int32`|
@@ -43,7 +43,7 @@
   | **Clearing**            |`Clear()`| Clears all elements in the tree.|`void`|
   | **Search**              |`Contains(T value)`| Checks if a value is present in the tree.|`bool`|
   |                         |`Find(Func<T, bool> predicate)`| Checks for a value with specified condition.|`T`|
-  | **Cloning**             |`Clone()`| Creates a copy of the current instance of the tree.|`IDataTree<T>`|
+  | **Cloning**             |`Clone()`| Creates a copy of the current instance of the tree.|[`IDataTree<T>`](#idataTree-t)|
   | **Index Access**        |`GetIndexValue(int index)`| Returns a value at a specified index using the current traversal type.|`T`|
   | **Min/Max**             |`Max()`| Returns the maximum value in the tree.|`T`|
   |                         |`Max(TreeNode<T> node)`| Returns the maximum node starting from the specified node.|[`TreeNode<T>?`](#treenodet)|
@@ -53,18 +53,18 @@
   |                         | `Successor(TreeNode<T> node)`| Returns the successor node of the specified node.|[`TreeNode<T>?`](#treenodet)|
   |                         |`Predecessor()`| Returns the predecessor value of the root node.|`T`|
   |                         |`Predecessor(TreeNode<T> node)`| Returns the predecessor node of the specified node.|[`TreeNode<T>?`](#treenodet)|
-  | **Range Access**        |`GetRange(int index, int count)`| Returns a range of values as `IEnumerable<T>` from the specified index.|`IEnumerable<T>`|
-  | **Traversal**           |`Traverse()`| Returns `IEnumerable<T>` of all values using the specified traversal method.|`IEnumerable<T>`|
-  |                         |`InOrderTraversal()`| Returns `IEnumerable<T>` using InOrder traversal.|`IEnumerable<T>`|
-  |                         |`PreOrderTraversal()`| Returns `IEnumerable<T>` using PreOrder traversal.|`IEnumerable<T>`|
-  |                         |`PostOrderTraversal()`| Returns `IEnumerable<T>` using PostOrder traversal.|`IEnumerable<T>`|
-  | **Path Search**         |`DFS(T target)`| Returns `IEnumerable<T>` of a path from the root to the target value.|`IEnumerable<T>`|
-  | **Conversion Methods**  |`ToArray()`| Returns `T[]` of all values using the current traversal type.|`T[]`|
-  |                         |`AsEnumerable()`| Returns `IEnumerable<T>` of all values using the current traversal type.|`IEnumerable<T>`|
-  |                         |`GetEnumerator()`| Returns `IEnumerator<T>` using the current traversal type.|`IEnumerator<T>`|
-  |                         |`ToLookup()`| Returns `ILookup<T, T>` of all values using the current traversal type.|`ILookup<T, T>`|
-  |                         |`ToLinkedList()`| Returns `LinkedList<T>` of all values using the current traversal type.|`LinkedList<T>`|
-  |                         |`ToImmutableList()`| Returns `ImmutableList<T>` of all values using the current traversal type.|`ImmutableList<T>`|
-  |                         |`ToHashSet()`| Returns `HashSet<T>` of all values using the current traversal type.|`HashSet<T>`|
-  |                         |`ToStack()`| Returns `Stack<T>` of all values using the current traversal type.|`Stack<T>`|
-  |                         |`ToQueue()`| Returns `Queue<T>` of all values using the current traversal type.|`Queue<T>`|
+  | **Range Access**        |`GetRange(int index, int count)`| Returns a range of values as `IEnumerable<T>` from the specified index.|[`IEnumerable<T>`](https://learn.microsoft.com/enus/dotnet/api/system.collections.ienumerableview=net9.0)|
+  | **Traversal**           |`Traverse()`| Returns all values using the specified traversal method.|[`IEnumerable<T>`](https://learn.microsoft.com/enus/dotnet/api/system.collections.ienumerableview=net9.0)|
+  |                         |`InOrderTraversal()`| Returns all values using InOrder traversal.|[`IEnumerable<T>`](https://learn.microsoft.com/enus/dotnet/api/system.collections.ienumerableview=net9.0)|
+  |                         |`PreOrderTraversal()`| Returns all values using PreOrder traversal.|[`IEnumerable<T>`](https://learn.microsoft.com/enus/dotnet/api/system.collections.ienumerableview=net9.0)|
+  |                         |`PostOrderTraversal()`| Returns all values using PostOrder traversal.|[`IEnumerable<T>`](https://learn.microsoft.com/enus/dotnet/api/system.collections.ienumerableview=net9.0)|
+  | **Path Search**         |`DFS(T target)`| Returns a path from the Root to the target value.|[`IEnumerable<T>`](https://learn.microsoft.com/enus/dotnet/api/system.collections.ienumerableview=net9.0)|
+  | **Conversion Methods**  |`ToArray()`| Returns all values using the current traversal type.|[`T[]`](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays)|
+  |                         |`AsEnumerable()`| Returns all values using the current traversal type.|[`IEnumerable<T>`](https://learn.microsoft.com/enus/dotnet/api/system.collections.ienumerableview=net9.0)|
+  |                         |`GetEnumerator()`| Returns all values using the current traversal type.|[`IEnumerable<T>`](https://learn.microsoft.com/enus/dotnet/api/system.collections.ienumerableview=net9.0)|
+  |                         |`ToLookup()`| Returns `ILookup<T, T>` of all values using the current traversal type.|[`ILookup<T, T>`](https://learn.microsoft.com/en-us/dotnet/api/system.linq.ilookup-2?view=net-9.0)|
+  |                         |`ToLinkedList()`| Returns `LinkedList<T>` of all values using the current traversal type.|[`LinkedList<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.linkedlist-1?view=net-9.0)|
+  |                         |`ToImmutableList()`| Returns `ImmutableList<T>` of all values using the current traversal type.|[`ImmutableList<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.immutable.immutablelist-1?view=net-9.0)|
+  |                         |`ToHashSet()`| Returns `HashSet<T>` of all values using the current traversal type.|[`HashSet<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.hashset-1?view=net-9.0)|
+  |                         |`ToStack()`| Returns `Stack<T>` of all values using the current traversal type.|[`Stack<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.stack-1?view=net-9.0)|
+  |                         |`ToQueue()`| Returns `Queue<T>` of all values using the current traversal type.|[`Queue<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.queue-1?view=net-9.0)|
