@@ -85,7 +85,9 @@
 </details>
 
 # Interfaces
-  ### IDataTree<T>  
+<details>
+  <summary>IDataTree&lt;T&gt;</summary>
+
   #### Parameters
   | **Parameter**   |**Description**|**ValueType**|
   |-----------------|---------------|-------------|
@@ -134,3 +136,5 @@
   |                         |`ToHashSet()`| Returns `HashSet<T>` of all values using the current traversal type.|[`HashSet<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.hashset-1?view=net-9.0)|
   |                         |`ToStack()`| Returns `Stack<T>` of all values using the current traversal type.|[`Stack<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.stack-1?view=net-9.0)|
   |                         |`ToQueue()`| Returns `Queue<T>` of all values using the current traversal type.|[`Queue<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.queue-1?view=net-9.0)|
+</details>
+  
