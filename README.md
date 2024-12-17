@@ -1,6 +1,6 @@
 # SharpStructures
 ## Structures
-  ### TreeNode<T>
+  ### TreeNode&lt;T&gt;
   #### Definition
   `public class TreeNode<T> : IDisposable`
   #### Constructor
@@ -53,7 +53,7 @@
   | **Successor/Predecessor**|`Successor()`| Returns the successor value of the root node.|`T`|
   |                         | `Successor(TreeNode<T> node)`| Returns the successor node of the specified node.|`TreeNode<T>?`|
   |                         |`Predecessor()`| Returns the predecessor value of the root node.|`T`|
-  |                         |`Predecessor(TreeNode<T> node)`| Returns the predecessor node of the specified node.|`TreeNode<T>?`|
+  |                         |`Predecessor(TreeNode<T> node)`| Returns the predecessor node of the specified node.|[`TreeNode<T>?`](#treenodet)|
   | **Range Access**        |`GetRange(int index, int count)`| Returns a range of values as `IEnumerable<T>` from the specified index.|`IEnumerable<T>`|
   | **Traversal**           |`Traverse()`| Returns `IEnumerable<T>` of all values using the specified traversal method.|`IEnumerable<T>`|
   |                         |`InOrderTraversal()`| Returns `IEnumerable<T>` using InOrder traversal.|`IEnumerable<T>`|
