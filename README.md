@@ -1,7 +1,7 @@
 # Structures
   ### TreeNode&lt;T&gt;
   #### Definition
-  `public class TreeNode<T> : [IDisposable](https://learn.microsoft.com/en-us/dotnet/api/system.idisposable?view=net-9.0)`
+  `public class TreeNode<T> : IDisposable`
   #### Constructor
   `public TreeNode(T, TreeNode<T>? left, TreeNode<T>? right, TreeNode<T>? parent)`
   #### Parameters
