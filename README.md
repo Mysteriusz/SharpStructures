@@ -3,16 +3,19 @@
   <summary>BinarySearchTree&lt;T&gt;</summary>
     
   ### Definition
-  `public class BinarySearchTree<T> : IDataTree<T>`
-  
+  ```csharp
+  public class BinarySearchTree<T> : IDataTree<T>
+  ```
   ### Constructor
-  `public BinarySearchTree(TreeNode<T>? root = null, Comparer<T>? comparer = null, TreeTraversalType indexingType = TreeTraversalType.InOrder)`
-  
+  ```csharp 
+  public BinarySearchTree(TreeNode<T>? root = null, Comparer<T>? comparer = null, TreeTraversalType traversalType = TreeTraversalType.InOrder)
+  ```
+
   #### Interface Parameter Implementations
   | **Interface**            |**Parameter**|**Description**|**MethodType**|
   |--------------------------|-------------|---------------|--------------|
   | **IDataTree<T>**          |`Root`       | Returns the root of the tree.|[`TreeNode<T>?`](#treenodet)|
-  | **IDataTree<T>**          |`IndexingType`| Returns tree's TreeTraversalType.|`TreeTraversalType`|
+  | **IDataTree<T>**          |`TraversalType`| Returns tree's TreeTraversalType.|`TreeTraversalType`|
   | **IDataTree<T>**          |`Comparator` | Returns tree's Comparator.|[`Comparer<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.icomparer?view=net-9.0)|
   | **IDataTree<T>**          |`Height`     | Returns Height of the tree.|`int32`|
   | **IDataTree<T>**          |`LeafCount`  | Returns tree's leaf nodes count.|`int32`|
@@ -64,11 +67,14 @@
   <summary>TreeNode&lt;T&gt;</summary>
   
   #### Definition
-  `public class TreeNode<T> : IDisposable`
-  
+  ```csharp
+  public class TreeNode<T> : IDisposable
+  ```
   #### Constructor
-  `public TreeNode(T value, TreeNode<T>? left = null, TreeNode<T>? right = null, TreeNode<T>? parent = null)`
-  
+  ```csharp
+  public TreeNode(T value, TreeNode<T>? left = null, TreeNode<T>? right = null, TreeNode<T>? parent = null)
+  ```
+
   #### Parameters
   | **Parameter**   |**Description**|**ValueType**|
   |-----------------|---------------|-------------|
@@ -89,18 +95,18 @@
   <summary>IDataTree&lt;T&gt;</summary>
 
   #### Parameters
-  | **Parameter**   |**Description**|**ValueType**|
-  |-----------------|---------------|-------------|
-  | **Root**        | Returns the root of the tree.|[`TreeNode<T>?`](#treenodet)|
-  | **IndexingType**| Returns tree`s TreeTraversalType.|`TreeTraversalType`|
-  | **Comparator**  | Returns tree`s Comparator.|[`Comparer<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.icomparer?view=net-9.0)|
-  | **Height**      | Returns Height of the tree.|`int32`|
-  | **LeafCount**   | Returns tree`s leaf nodes count.|`int32`|
-  | **Levels**      | Returns tree`s level count.|`int32`|
-  | **Count**       | Returns tree`s overall value count.|`int32`|
-  | **IsBST**       | Returns if tree is valid.|`bool`|
-  | **IsEmpty**     | Returns if tree is empty.|`bool`|
-  | **[int index]** | Returns value T from the tree at the specified index.|`T`|
+  | **Parameter**    |**Description**|**ValueType**|
+  |------------------|---------------|-------------|
+  | **Root**         | Returns the root of the tree.|[`TreeNode<T>?`](#treenodet)|
+  | **TraversalType**| Returns tree`s TreeTraversalType.|`TreeTraversalType`|
+  | **Comparator**   | Returns tree`s Comparator.|[`Comparer<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.icomparer?view=net-9.0)|
+  | **Height**       | Returns Height of the tree.|`int32`|
+  | **LeafCount**    | Returns tree`s leaf nodes count.|`int32`|
+  | **Levels**       | Returns tree`s level count.|`int32`|
+  | **Count**        | Returns tree`s overall value count.|`int32`|
+  | **IsBST**        | Returns if tree is valid.|`bool`|
+  | **IsEmpty**      | Returns if tree is empty.|`bool`|
+  | **[int index]**  | Returns value T from the tree at the specified index.|`T`|
   #### Methods
   | **Category**            |**Method**|**Description**|**MethodType**|
   |-------------------------|----------|---------------|--------------|
