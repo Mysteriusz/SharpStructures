@@ -23,6 +23,7 @@
 |                         |`RemoveRange(T[] values)`| Removes an array of values from the tree.|
 | **Clearing**            |`Clear()`| Clears all elements in the tree.|
 | **Search**              |`Contains(T value)`| Checks if a value is present in the tree.|
+|                         |`Find(Func<T, bool> predicate)`| Checks for a value with specified condition.|
 | **Cloning**             |`Clone()`| Creates a copy of the current instance of the tree.|
 | **Index Access**        |`GetIndexValue(int index)`| Returns a value at a specified index using the current traversal type.|
 | **Min/Max**             |`Max()`| Returns the maximum value in the tree.|
@@ -48,4 +49,3 @@
 |                         |`ToHashSet()`| Returns `HashSet<T>` of all values using the current traversal type.|
 |                         |`ToStack()`| Returns `Stack<T>` of all values using the current traversal type.|
 |                         |`ToQueue()`| Returns `Queue<T>` of all values using the current traversal type.|
-
