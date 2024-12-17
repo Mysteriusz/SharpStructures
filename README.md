@@ -15,8 +15,8 @@
   - **Max()** Returns maximum value of the tree.
   - **Min()** Returns miniumum value of the tree.
   - **Successor()**
-  - - Successor() Returns successor of the Root node.
-  - - Successor(TreeNode<T> node) Returns successor of the specified node.
+  - - **Successor()** Returns successor of the Root node.
+  - - **Successor(TreeNode<T> node)** Returns successor of the specified node.
   - **Predecessor()**
-  - - Predecessor() Returns predecessor of the Root node.
-  - - Predecessor(TreeNode<T> node) Returns predecessor of the specified node.
+  - - **Predecessor()** Returns predecessor of the Root node.
+  - - **Predecessor(TreeNode<T> node)** Returns predecessor of the specified node.
