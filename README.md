@@ -35,7 +35,7 @@
   | **IDataTree<T>**          |`Clear()`                  | Clears all elements in the tree.                 |`void`        |
   | **IDataTree<T>**          |`Contains(T value)`        | Checks if a value is present in the tree.        |`bool`        |
   | **IDataTree<T>**          |`Find(Func<T, bool> predicate)`| Checks for a value with a specified condition.|`T`          |
-  | **IDataTree<T>**          |`Clone()`                  | Creates a copy of the current instance of the tree.|[`IDataTree<T>`](#idataTree-t)|
+  | **IDataTree<T>**          |`Clone()`                  | Creates a copy of the current instance of the tree.|[`IDataTree<T>`](#idatatree)|
   | **IDataTree<T>**          |`GetIndexValue(int index)` | Returns a value at a specified index using the current traversal type.|`T`|
   | **IDataTree<T>**          |`Max()`                    | Returns the maximum value in the tree.           |`T`          |
   | **IDataTree<T>**          |`Max(TreeNode<T> node)`    | Returns the maximum node starting from the specified node.|[`TreeNode<T>?`](#treenode)|
@@ -92,6 +92,7 @@
 </details>
 
 # Interfaces
+<a id="idatatree"></a>
 <details>
   <summary>IDataTree&lt;T&gt;</summary>
 
@@ -118,7 +119,7 @@
   | **Clearing**            |`Clear()`| Clears all elements in the tree.|`void`|
   | **Search**              |`Contains(T value)`| Checks if a value is present in the tree.|`bool`|
   |                         |`Find(Func<T, bool> predicate)`| Checks for a value with specified condition.|`T`|
-  | **Cloning**             |`Clone()`| Creates a copy of the current instance of the tree.|[`IDataTree<T>`](#idataTree-t)|
+  | **Cloning**             |`Clone()`| Creates a copy of the current instance of the tree.|[`IDataTree<T>`](#idatatree)|
   | **Index Access**        |`GetIndexValue(int index)`| Returns a value at a specified index using the current traversal type.|`T`|
   | **Min/Max**             |`Max()`| Returns the maximum value in the tree.|`T`|
   |                         |`Max(TreeNode<T> node)`| Returns the maximum node starting from the specified node.|[`TreeNode<T>?`](#treenode)|
