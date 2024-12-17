@@ -11,9 +11,9 @@
   | **Value**       | Returns the value of the node.|`T`|
   | **Size**        | Returns node`s subtree size.|`int32`|
   | **IsLeaf**      | Returns if node is marked as leaf.|`bool`|
-  | **Left**        | Returns left child of the node.|`TreeNode<T>?`|
-  | **Right**       | Returns right child of the node.|`TreeNode<T>?`|
-  | **Parent**      | Returns parent of the node.|`TreeNode<T>?`|
+  | **Left**        | Returns left child of the node.|[`TreeNode<T>?`](#treenodet)|
+  | **Right**       | Returns right child of the node.|[`TreeNode<T>?`](#treenodet)|
+  | **Parent**      | Returns parent of the node.|[`TreeNode<T>?`](#treenodet)|
   #### Interface Implementations
   | **Interface**            |**Method**|**Description**|**MethodType**|
   |--------------------------|----------|---------------|--------------|
@@ -47,11 +47,11 @@
   | **Cloning**             |`Clone()`| Creates a copy of the current instance of the tree.|`IDataTree<T>`|
   | **Index Access**        |`GetIndexValue(int index)`| Returns a value at a specified index using the current traversal type.|`T`|
   | **Min/Max**             |`Max()`| Returns the maximum value in the tree.|`T`|
-  |                         |`Max(TreeNode<T> node)`| Returns the maximum node starting from the specified node.|`TreeNode<T>?`|
+  |                         |`Max(TreeNode<T> node)`| Returns the maximum node starting from the specified node.|[`TreeNode<T>?`](#treenodet)|
   |                         |`Min()`| Returns the minimum value in the tree.|`T`|
-  |                         |`Min(TreeNode<T> node)`| Returns the minimum node starting from the specified node.|`TreeNode<T>?`|
+  |                         |`Min(TreeNode<T> node)`| Returns the minimum node starting from the specified node.|[`TreeNode<T>?`](#treenodet)|
   | **Successor/Predecessor**|`Successor()`| Returns the successor value of the root node.|`T`|
-  |                         | `Successor(TreeNode<T> node)`| Returns the successor node of the specified node.|`TreeNode<T>?`|
+  |                         | `Successor(TreeNode<T> node)`| Returns the successor node of the specified node.|[`TreeNode<T>?`](#treenodet)|
   |                         |`Predecessor()`| Returns the predecessor value of the root node.|`T`|
   |                         |`Predecessor(TreeNode<T> node)`| Returns the predecessor node of the specified node.|[`TreeNode<T>?`](#treenodet)|
   | **Range Access**        |`GetRange(int index, int count)`| Returns a range of values as `IEnumerable<T>` from the specified index.|`IEnumerable<T>`|
