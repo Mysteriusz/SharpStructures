@@ -14,14 +14,14 @@
   #### Interface Parameter Implementations
   | **Interface**            |**Parameter**|**Description**|**MethodType**|
   |--------------------------|-------------|---------------|--------------|
-  | **IDataTree<T, TNode>**          |`Root`       | Returns the root of the tree.|[`BSTNode<T>?`](#treenode)|
+  | **IDataTree<T, TNode>**          |`Root`       | Returns the root of the tree.|[`BSTNode<T>?`](#bstnode)|
   | **IDataTree<T, TNode>**          |`TraversalType`| Returns tree's TreeTraversalType.|[`TreeTraversalType`](#treetraversaltype)|
   | **IDataTree<T, TNode>**          |`Comparator` | Returns tree's Comparator.|[`Comparer<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.icomparer?view=net-9.0)|
   | **IDataTree<T, TNode>**          |`Height`     | Returns Height of the tree.|`int32`|
   | **IDataTree<T, TNode>**          |`LeafCount`  | Returns tree's leaf nodes count.|`int32`|
   | **IDataTree<T, TNode>**          |`Levels`     | Returns tree's level count.|`int32`|
   | **IDataTree<T, TNode>**          |`Count`      | Returns tree's overall value count.|`int32`|
-  | **IDataTree<T, TNode>**          |`IsBST`      | Returns if tree is valid.|`bool`|
+  | **IDataTree<T, TNode>**          |`IsValid`      | Returns if tree is valid.|`bool`|
   | **IDataTree<T, TNode>**          |`IsEmpty`    | Returns if tree is empty.|`bool`|
   | **IDataTree<T, TNode>**          |`[int index]`| Returns value T from the tree at the specified index.|`T`|
   
@@ -38,13 +38,13 @@
   | **IDataTree<T, TNode>**          |`Clone()`                  | Creates a copy of the current instance of the tree.|[`IDataTree<T>`](#idatatree)|
   | **IDataTree<T, TNode>**          |`GetIndexValue(int index)` | Returns a value at a specified index using the current traversal type.|`T`|
   | **IDataTree<T, TNode>**          |`Max()`                    | Returns the maximum value in the tree.           |`T`          |
-  | **IDataTree<T, TNode>**          |`Max(TreeNode<T> node)`    | Returns the maximum node starting from the specified node.|[`BSTNode<T>?`](#treenode)|
+  | **IDataTree<T, TNode>**          |`Max(TreeNode<T> node)`    | Returns the maximum node starting from the specified node.|[`BSTNode<T>?`](#bstnode)|
   | **IDataTree<T, TNode>**          |`Min()`                    | Returns the minimum value in the tree.           |`T`          |
-  | **IDataTree<T, TNode>**          |`Min(TreeNode<T> node)`    | Returns the minimum node starting from the specified node.|[`BSTNode<T>?`](#treenode)|
+  | **IDataTree<T, TNode>**          |`Min(TreeNode<T> node)`    | Returns the minimum node starting from the specified node.|[`BSTNode<T>?`](#bstnode)|
   | **IDataTree<T, TNode>**          |`Successor()`              | Returns the successor value of the root node.    |`T`          |
-  | **IDataTree<T, TNode>**          |`Successor(TreeNode<T> node)`| Returns the successor node of the specified node.|[`BSTNode<T>?`](#treenode)|
+  | **IDataTree<T, TNode>**          |`Successor(TreeNode<T> node)`| Returns the successor node of the specified node.|[`BSTNode<T>?`](#bstnode)|
   | **IDataTree<T, TNode>**          |`Predecessor()`            | Returns the predecessor value of the root node.  |`T`          |
-  | **IDataTree<T, TNode>**          |`Predecessor(TreeNode<T> node)`| Returns the predecessor node of the specified node.|[`BSTNode<T>?`](#treenode)|
+  | **IDataTree<T, TNode>**          |`Predecessor(TreeNode<T> node)`| Returns the predecessor node of the specified node.|[`BSTNode<T>?`](#bstnode)|
   | **IDataTree<T, TNode>**          |`GetRange(int index, int count)`| Returns a range of values as `IEnumerable<T>` from the specified index.|[`IEnumerable<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0)|
   | **IDataTree<T, TNode>**          |`Traverse()`               | Returns all values using the specified traversal method.|[`IEnumerable<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0)|
   | **IDataTree<T, TNode>**          |`InOrderTraversal()`       | Returns all values using InOrder traversal.      |[`IEnumerable<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0)|
@@ -80,7 +80,6 @@
   | **Parameter**   |**Description**|**ValueType**|
   |-----------------|---------------|-------------|
   | **Value**       | Returns the value of the node.|`T`|
-  | **Size**        | Returns node`s subtree size.|`int32`|
   | **IsLeaf**      | Returns if node is marked as leaf.|`bool`|
   | **Left**        | Returns left child of the node.|[`TreeNode<T>?`](#treenode)|
   | **Right**       | Returns right child of the node.|[`TreeNode<T>?`](#treenode)|
@@ -113,7 +112,6 @@
   | **Parameter**   |**Description**|**ValueType**|
   |-----------------|---------------|-------------|
   | **Value**       | Returns the value of the node.|`T`|
-  | **Size**        | Returns node`s subtree size.|`int32`|
   | **IsLeaf**      | Returns if node is marked as leaf.|`bool`|
   | **Left**        | Returns left child of the node.|[`TreeNode<T>?`](#treenode)|
   | **Right**       | Returns right child of the node.|[`TreeNode<T>?`](#treenode)|
@@ -147,7 +145,6 @@
   | **Parameter**   |**Description**|**ValueType**|
   |-----------------|---------------|-------------|
   | **Value**       | Returns the value of the node.|`T`|
-  | **Size**        | Returns node`s subtree size.|`int32`|
   | **IsLeaf**      | Returns if node is marked as leaf.|`bool`|
   | **Left**        | Returns left child of the node.|[`TreeNode<T>?`](#treenode)|
   | **Right**       | Returns right child of the node.|[`TreeNode<T>?`](#treenode)|
@@ -195,7 +192,7 @@
   | **LeafCount**    | Returns tree`s leaf nodes count.|`int32`|
   | **Levels**       | Returns tree`s level count.|`int32`|
   | **Count**        | Returns tree`s overall value count.|`int32`|
-  | **IsBST**        | Returns if tree is valid.|`bool`|
+  | **IsValis**        | Returns if tree is valid.|`bool`|
   | **IsEmpty**      | Returns if tree is empty.|`bool`|
   | **[int index]**  | Returns value T from the tree at the specified index.|`T`|
   #### Methods
