@@ -90,22 +90,23 @@
   #### Interface Methods Implementations 
   | **Interface**            |**Method**                 |**Description**                                   |**MethodType**|
   |--------------------------|---------------------------|--------------------------------------------------|--------------|
-  | **IDataTree<T, TNode>**          |`Add(T value)`             | Inserts a value into the tree.                   |`void`        |
-  | **IDataTree<T, TNode>**          |`AddRange(T[] values)`     | Inserts an array of values into the tree.        |`void`        |
-  | **IDataTree<T, TNode>**          |`Remove(T value)`          | Removes a value from the tree.                   |`void`        |
-  | **IDataTree<T, TNode>**          |`RemoveRange(T[] values)`  | Removes an array of values from the tree.        |`void`        |
-  | **IDataTree<T, TNode>**          |`Clear()`                  | Clears all elements in the tree.                 |`void`        |
-  | **IDataTree<T, TNode>**          |`Contains(T value)`        | Checks if a value is present in the tree.        |`bool`        |
-  | **IDataTree<T, TNode>**          |`Find(Func<T, bool> predicate)`| Checks for a value with a specified condition.|`T`          |
+  | **IDataTree<T, TNode>**          |`Add(T value)`             | Inserts a value into the tree.                   |`void`|
+  | **IDataTree<T, TNode>**          |`AddRange(T[] values)`     | Inserts an array of values into the tree.        |`void`|
+  | **IDataTree<T, TNode>**          |`Remove(T value)`          | Removes a value from the tree.                   |`void`|
+  | **IDataTree<T, TNode>**          |`RemoveRange(T[] values)`  | Removes an array of values from the tree.        |`void`|
+  | **IDataTree<T, TNode>**          |`Clear()`                  | Clears all elements in the tree.                 |`void`|
+  | **IDataTree<T, TNode>**          |`Contains(T value)`        | Checks if a value is present in the tree.        |`bool`|
+  | **IDataTree<T, TNode>**          |`Find(Func<T, bool> predicate)`| Checks for a value with a specified condition.|`T`|
+  | **IDataTree<T, TNode>**          |`Find(Func<T, bool> predicate, AVLNode<T>? node)`| Checks for a value with a specified condition from specified node.|`T`|
   | **IDataTree<T, TNode>**          |`Clone()`                  | Creates a copy of the current instance of the tree.|[`IDataTree<T>`](#idatatree)|
   | **IDataTree<T, TNode>**          |`GetIndexValue(int index)` | Returns a value at a specified index using the current traversal type.|`T`|
-  | **IDataTree<T, TNode>**          |`Max()`                    | Returns the maximum value in the tree.           |`T`          |
+  | **IDataTree<T, TNode>**          |`Max()`                    | Returns the maximum value in the tree.           |`T`|
   | **IDataTree<T, TNode>**          |`Max(AVLNode<T> node)`    | Returns the maximum node starting from the specified node.|[`AVLNode<T>?`](#avlnode)|
-  | **IDataTree<T, TNode>**          |`Min()`                    | Returns the minimum value in the tree.           |`T`          |
+  | **IDataTree<T, TNode>**          |`Min()`                    | Returns the minimum value in the tree.           |`T`|
   | **IDataTree<T, TNode>**          |`Min(AVLNode<T> node)`    | Returns the minimum node starting from the specified node.|[`AVLNode<T>?`](#avlnode)|
-  | **IDataTree<T, TNode>**          |`Successor()`              | Returns the successor value of the root node.    |`T`          |
+  | **IDataTree<T, TNode>**          |`Successor()`              | Returns the successor value of the root node.    |`T`|
   | **IDataTree<T, TNode>**          |`Successor(AVLNode<T> node)`| Returns the successor node of the specified node.|[`AVLNode<T>?`](#avlnode)|
-  | **IDataTree<T, TNode>**          |`Predecessor()`            | Returns the predecessor value of the root node.  |`T`          |
+  | **IDataTree<T, TNode>**          |`Predecessor()`            | Returns the predecessor value of the root node.  |`T`|
   | **IDataTree<T, TNode>**          |`Predecessor(AVLNode<T> node)`| Returns the predecessor node of the specified node.|[`AVLNode<T>?`](#avlnode)|
   | **IDataTree<T, TNode>**          |`GetRange(int index, int count)`| Returns a range of values as `IEnumerable<T>` from the specified index.|[`IEnumerable<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0)|
   | **IDataTree<T, TNode>**          |`Traverse()`               | Returns all values using the specified traversal method.|[`IEnumerable<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0)|
