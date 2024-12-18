@@ -15,7 +15,7 @@
   | **Interface**            |**Parameter**|**Description**|**MethodType**|
   |--------------------------|-------------|---------------|--------------|
   | **IDataTree<T, TNode>**          |`Root`       | Returns the root of the tree.|[`BSTNode<T>?`](#treenode)|
-  | **IDataTree<T, TNode>**          |`TraversalType`| Returns tree's TreeTraversalType.|`TreeTraversalType`|
+  | **IDataTree<T, TNode>**          |`TraversalType`| Returns tree's TreeTraversalType.|[`TreeTraversalType`](#treetravesaltype)|
   | **IDataTree<T, TNode>**          |`Comparator` | Returns tree's Comparator.|[`Comparer<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.icomparer?view=net-9.0)|
   | **IDataTree<T, TNode>**          |`Height`     | Returns Height of the tree.|`int32`|
   | **IDataTree<T, TNode>**          |`LeafCount`  | Returns tree's leaf nodes count.|`int32`|
