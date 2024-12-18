@@ -124,6 +124,40 @@
   | **TreeNode<T>**          |`Dispose()`| Disposes the node and all the child nodes.|`void`|
 </details>
 <details>
+  <a id="avlnode"></a>
+  <summary>AVLNode&lt;T&gt;</summary>
+  
+  #### Definition
+  ```csharp
+  public class AVLNode<T> : TreeNode<T>
+  ```
+  #### Constructor
+  ```csharp
+  public AVLNode(T value, AVLNode<T>? left = null, AVLNode<T>? right = null, AVLNode<T>? parent = null)
+  ```
+
+  #### Parameters
+  | **Parameter**   |**Description**|**ValueType**|
+  |-----------------|---------------|-------------|
+  | **BalanceFactor**| Returns node`s current balance factor.|`int32`|
+  | **Left**        | Returns left child of the node.|[`AVLNode<T>?`](#avlnode)|
+  | **Right**       | Returns right child of the node.|[`AVLNode<T>?`](#avlnode)|
+  | **Parent**      | Returns parent of the node.|[`AVLNode<T>?`](#avlnode)|
+  #### Inheritence Parameters
+  | **Parameter**   |**Description**|**ValueType**|
+  |-----------------|---------------|-------------|
+  | **Value**       | Returns the value of the node.|`T`|
+  | **Size**        | Returns node`s subtree size.|`int32`|
+  | **IsLeaf**      | Returns if node is marked as leaf.|`bool`|
+  | **Left**        | Returns left child of the node.|[`TreeNode<T>?`](#treenode)|
+  | **Right**       | Returns right child of the node.|[`TreeNode<T>?`](#treenode)|
+  | **Parent**      | Returns parent of the node.|[`TreeNode<T>?`](#treenode)|
+  #### Inheritence Methods
+  | **Inheritence**            |**Method**|**Description**|**MethodType**|
+  |--------------------------|----------|---------------|--------------|
+  | **TreeNode<T>**          |`Dispose()`| Disposes the node and all the child nodes.|`void`|
+</details>
+<details>
   <a id="treetraversaltype"></a>
   <summary>TreeTraversalType</summary>
   
