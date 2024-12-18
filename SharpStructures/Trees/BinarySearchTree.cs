@@ -25,12 +25,12 @@ namespace SharpStructures.Trees
         public TreeTraversalType TraversalType { get; set; }
         public Comparer<T> Comparator { get; set; }
 
-        public int Height => HeightRec(0, Root);
-        public int LeafCount => LeafCountRec(0, Root);
+        public int Height => GetHeightRec(Root);
+        public int LeafCount => GetLeafCountRec(Root);
+        public int Count => GetCountRec(Root);
         public int Levels => Height + 1;
-        public int Count => Root != null ? Root.Size : 0;
 
-        public bool IsBST => IsBSTRec(Root);
+        public bool IsValid => IsValidRec(Root);
         public bool IsEmpty => Root == null;
 
         public T this[int index] => GetIndexValue(index);
@@ -46,7 +46,6 @@ namespace SharpStructures.Trees
             while (x != null)
             {
                 y = x;
-                x.Size++;
 
                 if (Comparator.Compare(z.Value, x.Value) < 0)
                     x = x.Left;
@@ -454,41 +453,6 @@ namespace SharpStructures.Trees
             else
                 return SearchRec(value, curr.Right);
         }
-        private int HeightRec(int currH, BSTNode<T>? node)
-        {
-            if (node == null)
-                return 0;
-            
-            int l = HeightRec(currH + 1, node.Left);
-            int r = HeightRec(currH + 1, node.Right);
-        
-            return 1 + Math.Max(l, r);
-        }
-        private int LeafCountRec(int currC, BSTNode<T>? node)
-        {
-            if (node == null)
-                return 0;
-
-            if (node.IsLeaf)
-                return 1;
-
-            int l = LeafCountRec(currC, node.Left);
-            int r = LeafCountRec(currC, node.Right);
-
-            return r + l;
-        }
-        private bool IsBSTRec(BSTNode<T>? node)
-        {
-            if (node == null)
-                return true;
-
-            if (node.Left != null && Comparator.Compare(Max(node.Left)!.Value, node.Value) >= 0)
-                return false;
-            if (node.Right != null && Comparator.Compare(Max(node.Right)!.Value, node.Value) < 0)
-                return false;
-
-            return IsBSTRec(node.Left) && IsBSTRec(node.Right);
-        }
         private void ShiftNodes(BSTNode<T> u, BSTNode<T> v)
         {
             if (u.Parent == null)
@@ -502,5 +466,50 @@ namespace SharpStructures.Trees
                 v.Parent = u.Parent;
         }
         #endregion END Helper Methods    
+
+        #region START Utils
+        private int GetHeightRec(BSTNode<T>? node, int currH = 0)
+        {
+            if (node == null)
+                return 0;
+
+            int l = GetHeightRec(node.Left, currH + 1);
+            int r = GetHeightRec(node.Right, currH + 1);
+
+            return 1 + Math.Max(l, r);
+        }
+        private int GetLeafCountRec(BSTNode<T>? node, int currC = 0)
+        {
+            if (node == null)
+                return 0;
+
+            if (node.IsLeaf)
+                return 1;
+
+            int l = GetLeafCountRec(node.Left, currC);
+            int r = GetLeafCountRec(node.Right, currC);
+
+            return r + l;
+        }
+        private int GetCountRec(BSTNode<T>? node)
+        {
+            if (node == null)
+                return 0;
+            
+            return 1 + GetCountRec(node.Left) + GetCountRec(node.Right);
+        }
+        private bool IsValidRec(BSTNode<T>? node)
+        {
+            if (node == null)
+                return true;
+
+            if (node.Left != null && Comparator.Compare(Max(node.Left)!.Value, node.Value) >= 0)
+                return false;
+            if (node.Right != null && Comparator.Compare(Max(node.Right)!.Value, node.Value) < 0)
+                return false;
+
+            return IsValidRec(node.Left) && IsValidRec(node.Right);
+        }
+        #endregion END Utils
     }
 }

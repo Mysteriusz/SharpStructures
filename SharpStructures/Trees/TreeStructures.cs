@@ -56,7 +56,7 @@ namespace SharpStructures.Trees
         /// <summary>
         /// Indicates whether the <see cref="IDataTree{T, TNode}"/> is correctly structured.
         /// </summary>
-        public bool IsBST { get; }
+        public bool IsValid { get; }
 
         /// <summary>
         /// Indicates whether the <see cref="IDataTree{T, TNode}"/> is empty.
@@ -315,7 +315,6 @@ namespace SharpStructures.Trees
         }
 
         public T Value;
-        public int Size { get; internal set; } = 1;
         public bool IsLeaf => Left == null && Right == null;  
         public virtual TreeNode<T>? Left { get; set; } = null;
         public virtual TreeNode<T>? Right { get; set; } = null;
