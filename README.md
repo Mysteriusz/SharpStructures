@@ -247,7 +247,7 @@
   #### Parameters
   | **Parameter**    |**Description**|**ValueType**|
   |------------------|---------------|-------------|
-  | **Root**         | Returns the root of the tree.|[`TreeNode<T>?`](#treenode)|
+  | **Root**         | Returns the root of the tree.|[`TNode?`](#treenode)|
   | **TraversalType**| Returns tree`s TreeTraversalType.|[`TreeTraversalType`](#treetraversaltype)|
   | **Comparator**   | Returns tree`s Comparator.|[`Comparer<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.comparer-1?view=net-9.0)|
   | **Height**       | Returns Height of the tree.|`int32`|
@@ -270,13 +270,13 @@
   | **Cloning**             |`Clone()`| Creates a copy of the current instance of the tree.|[`IDataTree<T>`](#idatatree)|
   | **Index Access**        |`GetIndexValue(int index)`| Returns a value at a specified index using the current traversal type.|`T`|
   | **Min/Max**             |`Max()`| Returns the maximum value in the tree.|`T`|
-  |                         |`Max(TreeNode<T> node)`| Returns the maximum node starting from the specified node.|[`TreeNode<T>?`](#treenode)|
+  |                         |`Max(TNode node)`| Returns the maximum node starting from the specified node.|[`TNode?`](#treenode)|
   |                         |`Min()`| Returns the minimum value in the tree.|`T`|
-  |                         |`Min(TreeNode<T> node)`| Returns the minimum node starting from the specified node.|[`TreeNode<T>?`](#treenode)|
+  |                         |`Min(TNode node)`| Returns the minimum node starting from the specified node.|[`TNode?`](#treenode)|
   | **Successor/Predecessor**|`Successor()`| Returns the successor value of the root node.|`T`|
-  |                         | `Successor(TreeNode<T> node)`| Returns the successor node of the specified node.|[`TreeNode<T>?`](#treenode)|
+  |                         | `Successor(TNode node)`| Returns the successor node of the specified node.|[`TNode?`](#treenode)|
   |                         |`Predecessor()`| Returns the predecessor value of the root node.|`T`|
-  |                         |`Predecessor(TreeNode<T> node)`| Returns the predecessor node of the specified node.|[`TreeNode<T>?`](#treenode)|
+  |                         |`Predecessor(TNode node)`| Returns the predecessor node of the specified node.|[`TNode?`](#treenode)|
   | **Range Access**        |`GetRange(int index, int count)`| Returns a range of values as `IEnumerable<T>` from the specified index.|[`IEnumerable<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0)|
   | **Traversal**           |`Traverse()`| Returns all values using the specified traversal method.|[`IEnumerable<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0)|
   |                         |`InOrderTraversal()`| Returns all values using InOrder traversal.|[`IEnumerable<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0)|
