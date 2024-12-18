@@ -267,6 +267,7 @@
   | **Clearing**            |`Clear()`| Clears all elements in the tree.|`void`|
   | **Search**              |`Contains(T value)`| Checks if a value is present in the tree.|`bool`|
   |                         |`Find(Func<T, bool> predicate)`| Checks for a value with specified condition.|`T`|
+  |                         |`Find(Func<T, bool> predicate, TNode? node)`| Checks for a value with specified condition from specified node.|`T`|
   | **Cloning**             |`Clone()`| Creates a copy of the current instance of the tree.|[`IDataTree<T>`](#idatatree)|
   | **Index Access**        |`GetIndexValue(int index)`| Returns a value at a specified index using the current traversal type.|`T`|
   | **Min/Max**             |`Max()`| Returns the maximum value in the tree.|`T`|
