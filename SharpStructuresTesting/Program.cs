@@ -19,11 +19,11 @@ namespace SharpStructuresTesting
             //tree.MaxNode(tree.Root).Left = new TreeNode<int>(5);
 
             List<int> list = [0, 1, 2, 3, 4, 5];
-            tree.IndexingType = TreeTraversalType.InOrder;
-            TreeNode<int> node = new(0);
+            //BSTNode<int> node = new(2);
+            //node.
 
-            //Debug.WriteLine(string.Join(", ", list.GetRange(0, -1)));
-            Debug.WriteLine(string.Join(", ", tree.Root));
+            //Debug.WriteLine(string.Join(", ", list.GetRang.LEe(0, -1)));
+            Debug.WriteLine(string.Join(", ", tree.IsBST));
             Debug.WriteLine(string.Join(", ", tree.InOrderTraversal()));
 
             //Debug.WriteLine(string.Join(", ", tree[5].Value));
