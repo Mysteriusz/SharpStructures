@@ -153,7 +153,7 @@
   | **Parameter**    |**Description**|**ValueType**|
   |------------------|---------------|-------------|
   | **Root**         | Returns the root of the tree.|[`TreeNode<T>?`](#treenode)|
-  | **TraversalType**| Returns tree`s TreeTraversalType.|`TreeTraversalType`|
+  | **TraversalType**| Returns tree`s TreeTraversalType.|[`TreeTraversalType`](#treetraversaltype)|
   | **Comparator**   | Returns tree`s Comparator.|[`Comparer<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.icomparer?view=net-9.0)|
   | **Height**       | Returns Height of the tree.|`int32`|
   | **LeafCount**    | Returns tree`s leaf nodes count.|`int32`|
