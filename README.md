@@ -4,7 +4,7 @@
     
   ### Definition
   ```csharp
-  public class BinarySearchTree<T> : IDataTree<T>
+  public class BinarySearchTree<T> : IDataTree<T, BSTNode<T>>
   ```
   ### Constructor
   ```csharp 
@@ -14,7 +14,7 @@
   #### Interface Parameter Implementations
   | **Interface**            |**Parameter**|**Description**|**MethodType**|
   |--------------------------|-------------|---------------|--------------|
-  | **IDataTree<T>**          |`Root`       | Returns the root of the tree.|[`TreeNode<T>?`](#treenode)|
+  | **IDataTree<T>**          |`Root`       | Returns the root of the tree.|[`BSTNode<T>?`](#treenode)|
     | **IDataTree<T>**          |`TraversalType`| Returns tree's TreeTraversalType.|`TreeTraversalType`|
   | **IDataTree<T>**          |`Comparator` | Returns tree's Comparator.|[`Comparer<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.icomparer?view=net-9.0)|
   | **IDataTree<T>**          |`Height`     | Returns Height of the tree.|`int32`|
@@ -38,13 +38,13 @@
   | **IDataTree<T>**          |`Clone()`                  | Creates a copy of the current instance of the tree.|[`IDataTree<T>`](#idatatree)|
   | **IDataTree<T>**          |`GetIndexValue(int index)` | Returns a value at a specified index using the current traversal type.|`T`|
   | **IDataTree<T>**          |`Max()`                    | Returns the maximum value in the tree.           |`T`          |
-  | **IDataTree<T>**          |`Max(TreeNode<T> node)`    | Returns the maximum node starting from the specified node.|[`TreeNode<T>?`](#treenode)|
+  | **IDataTree<T>**          |`Max(TreeNode<T> node)`    | Returns the maximum node starting from the specified node.|[`BSTNode<T>?`](#treenode)|
   | **IDataTree<T>**          |`Min()`                    | Returns the minimum value in the tree.           |`T`          |
-  | **IDataTree<T>**          |`Min(TreeNode<T> node)`    | Returns the minimum node starting from the specified node.|[`TreeNode<T>?`](#treenode)|
+  | **IDataTree<T>**          |`Min(TreeNode<T> node)`    | Returns the minimum node starting from the specified node.|[`BSTNode<T>?`](#treenode)|
   | **IDataTree<T>**          |`Successor()`              | Returns the successor value of the root node.    |`T`          |
-  | **IDataTree<T>**          |`Successor(TreeNode<T> node)`| Returns the successor node of the specified node.|[`TreeNode<T>?`](#treenode)|
+  | **IDataTree<T>**          |`Successor(TreeNode<T> node)`| Returns the successor node of the specified node.|[`BSTNode<T>?`](#treenode)|
   | **IDataTree<T>**          |`Predecessor()`            | Returns the predecessor value of the root node.  |`T`          |
-  | **IDataTree<T>**          |`Predecessor(TreeNode<T> node)`| Returns the predecessor node of the specified node.|[`TreeNode<T>?`](#treenode)|
+  | **IDataTree<T>**          |`Predecessor(TreeNode<T> node)`| Returns the predecessor node of the specified node.|[`BSTNode<T>?`](#treenode)|
   | **IDataTree<T>**          |`GetRange(int index, int count)`| Returns a range of values as `IEnumerable<T>` from the specified index.|[`IEnumerable<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0)|
   | **IDataTree<T>**          |`Traverse()`               | Returns all values using the specified traversal method.|[`IEnumerable<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0)|
   | **IDataTree<T>**          |`InOrderTraversal()`       | Returns all values using InOrder traversal.      |[`IEnumerable<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0)|
@@ -91,6 +91,39 @@
   | **IDisposable**          |`Dispose()`| Disposes the node and all the child nodes.|`void`|
 </details>
 <details>
+  <a id="bstnode"></a>
+  <summary>BSTNode&lt;T&gt;</summary>
+  
+  #### Definition
+  ```csharp
+  public class BSTNode<T> : TreeNode<T>
+  ```
+  #### Constructor
+  ```csharp
+  public BSTNode(T value, TreeNode<T>? left = null, TreeNode<T>? right = null, TreeNode<T>? parent = null)
+  ```
+
+  #### Parameters
+  | **Parameter**   |**Description**|**ValueType**|
+  |-----------------|---------------|-------------|
+  | **Left**        | Returns left child of the node.|[`BSTNode<T>?`](#bstnode)|
+  | **Right**       | Returns right child of the node.|[`BSTNode<T>?`](#bstnode)|
+  | **Parent**      | Returns parent of the node.|[`BSTNode<T>?`](#bstnode)|
+  #### Inheritence Parameters
+  | **Parameter**   |**Description**|**ValueType**|
+  |-----------------|---------------|-------------|
+  | **Value**       | Returns the value of the node.|`T`|
+  | **Size**        | Returns node`s subtree size.|`int32`|
+  | **IsLeaf**      | Returns if node is marked as leaf.|`bool`|
+  | **Left**        | Returns left child of the node.|[`TreeNode<T>?`](#treenode)|
+  | **Right**       | Returns right child of the node.|[`TreeNode<T>?`](#treenode)|
+  | **Parent**      | Returns parent of the node.|[`TreeNode<T>?`](#treenode)|
+  #### Inheritence Methods
+  | **Inheritence**            |**Method**|**Description**|**MethodType**|
+  |--------------------------|----------|---------------|--------------|
+  | **TreeNode<T>**          |`Dispose()`| Disposes the node and all the child nodes.|`void`|
+</details>
+<details>
   <a id="treetraversaltype"></a>
   <summary>TreeTraversalType</summary>
   
@@ -110,6 +143,11 @@
 <a id="idatatree"></a>
 <details>
   <summary>IDataTree&lt;T&gt;</summary>
+
+  #### Definition
+  ``` csharp
+  public interface IDataTree<T, TNode> where TNode : TreeNode<T>
+  ```
 
   #### Parameters
   | **Parameter**    |**Description**|**ValueType**|
