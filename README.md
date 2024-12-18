@@ -100,7 +100,7 @@
   ```
   #### Constructor
   ```csharp
-  public BSTNode(T value, TreeNode<T>? left = null, TreeNode<T>? right = null, TreeNode<T>? parent = null)
+  public BSTNode(T value, BSTNode<T>? left = null, BSTNode<T>? right = null, BSTNode<T>? parent = null)
   ```
 
   #### Parameters
