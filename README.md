@@ -15,7 +15,7 @@
   | **Interface**            |**Parameter**|**Description**|**MethodType**|
   |--------------------------|-------------|---------------|--------------|
   | **IDataTree<T>**          |`Root`       | Returns the root of the tree.|[`TreeNode<T>?`](#treenode)|
-  | **IDataTree<T>**          |`TraversalType`| Returns tree's TreeTraversalType.|`TreeTraversalType`|
+    | **IDataTree<T>**          |`TraversalType`| Returns tree's TreeTraversalType.|`TreeTraversalType`|
   | **IDataTree<T>**          |`Comparator` | Returns tree's Comparator.|[`Comparer<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.icomparer?view=net-9.0)|
   | **IDataTree<T>**          |`Height`     | Returns Height of the tree.|`int32`|
   | **IDataTree<T>**          |`LeafCount`  | Returns tree's leaf nodes count.|`int32`|
@@ -63,8 +63,8 @@
 </details>
 
 # Structures
-<a id="treenode"></a>
 <details>
+  <a id="treenode"></a>
   <summary>TreeNode&lt;T&gt;</summary>
   
   #### Definition
@@ -89,6 +89,21 @@
   | **Interface**            |**Method**|**Description**|**MethodType**|
   |--------------------------|----------|---------------|--------------|
   | **IDisposable**          |`Dispose()`| Disposes the node and all the child nodes.|`void`|
+</details>
+<details>
+  <a id="treetraversaltype"></a>
+  <summary>TreeTraversalType</summary>
+  
+  #### Definition
+  ```csharp
+  public enum TreeTraversalType
+  ```
+  #### Fields
+  | **Name**   |**Description**|**Value**|
+  |-----------------|---------------|-------------|
+  | **InOrder**       | InOrder traversal type.|`0`|
+  | **PreOrder**        | PreOrder traversal type.|`1`|
+  | **PostOrder**      | PostOrder traversal type.|`2`|
 </details>
 
 # Interfaces
@@ -145,4 +160,3 @@
   |                         |`ToStack()`| Returns `Stack<T>` of all values using the current traversal type.|[`Stack<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.stack-1?view=net-9.0)|
   |                         |`ToQueue()`| Returns `Queue<T>` of all values using the current traversal type.|[`Queue<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.queue-1?view=net-9.0)|
 </details>
-  
