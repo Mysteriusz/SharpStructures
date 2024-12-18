@@ -30,7 +30,7 @@ namespace SharpStructuresTesting
             //BSTNode<int> node = new(2);
             //node.
 
-            Debug.WriteLine(string.Join(", ", avl.Count));
+            Debug.WriteLine(string.Join(", ", avl.GetEnumerator()));
             Debug.WriteLine(string.Join(", ", avl.InOrderTraversal()));
             //Debug.WriteLine(string.Join(", ", avl.Root.Value));
 

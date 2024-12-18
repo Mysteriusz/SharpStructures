@@ -10,6 +10,10 @@ using System.Threading.Tasks;
 
 namespace SharpStructures.Trees
 {
+    /// <summary>
+    /// Adelson-Velsky and Landis (AVL) representation that allows efficient searching, insertion, deletion and traversal operations.<br />
+    /// Tree is built using <see cref="AVLNode{T}"/> class.
+    /// </summary>
     public class AVLTree<T> : IDataTree<T, AVLNode<T>>
     {
         public AVLTree(AVLNode<T>? root = null, Comparer<T>? comparer = null, TreeTraversalType traversalType = TreeTraversalType.InOrder)

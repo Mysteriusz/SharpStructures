@@ -5,7 +5,7 @@ namespace SharpStructures.Trees
 {
     /// <summary>
     /// Indexed Binary Search Tree (IBST) representation that allows efficient searching, insertion, deletion and traversal operations.<br />
-    /// Tree is build using <see cref="BSTNode{T}"/> class.
+    /// Tree is built using <see cref="BSTNode{T}"/> class.
     /// </summary>
     public class BinarySearchTree<T> : IDataTree<T, BSTNode<T>>
     {
