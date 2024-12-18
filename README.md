@@ -62,6 +62,9 @@
   | **IDataTree<T, TNode>**          |`ToStack()`                | Returns `Stack<T>` of all values using the current traversal type.|[`Stack<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.stack-1?view=net-9.0)|
   | **IDataTree<T, TNode>**          |`ToQueue()`                | Returns `Queue<T>` of all values using the current traversal type.|[`Queue<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.queue-1?view=net-9.0)|
 </details>
+
+---
+
 <details>
   <summary>AVLTree&lt;T&gt;</summary>
     
@@ -126,6 +129,8 @@
   | **IDataTree<T, TNode>**          |`ToQueue()`                | Returns `Queue<T>` of all values using the current traversal type.|[`Queue<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.queue-1?view=net-9.0)|
 </details>
 
+---
+
 # Structures
 <details>
   <a id="treenode"></a>
@@ -153,6 +158,9 @@
   |--------------------------|----------|---------------|--------------|
   | **IDisposable**          |`Dispose()`| Disposes the node and all the child nodes.|`void`|
 </details>
+
+---
+
 <details>
   <a id="bstnode"></a>
   <summary>BSTNode&lt;T&gt;</summary>
@@ -185,6 +193,9 @@
   |--------------------------|----------|---------------|--------------|
   | **TreeNode<T>**          |`Dispose()`| Disposes the node and all the child nodes.|`void`|
 </details>
+
+---
+
 <details>
   <a id="avlnode"></a>
   <summary>AVLNode&lt;T&gt;</summary>
@@ -218,6 +229,9 @@
   |--------------------------|----------|---------------|--------------|
   | **TreeNode<T>**          |`Dispose()`| Disposes the node and all the child nodes.|`void`|
 </details>
+
+---
+
 <details>
   <a id="treetraversaltype"></a>
   <summary>TreeTraversalType</summary>
@@ -233,6 +247,8 @@
   | **PreOrder**        | PreOrder traversal type.|`1`|
   | **PostOrder**      | PostOrder traversal type.|`2`|
 </details>
+
+---
 
 # Interfaces
 > [!IMPORTANT] 
@@ -296,3 +312,5 @@
   |                         |`ToStack()`| Returns `Stack<T>` of all values using the current traversal type.|[`Stack<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.stack-1?view=net-9.0)|
   |                         |`ToQueue()`| Returns `Queue<T>` of all values using the current traversal type.|[`Queue<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.queue-1?view=net-9.0)|
 </details>
+
+---
