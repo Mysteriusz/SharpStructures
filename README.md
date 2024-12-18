@@ -191,7 +191,7 @@
   #### Inheritence Methods
   | **Inheritence**            |**Method**|**Description**|**MethodType**|
   |--------------------------|----------|---------------|--------------|
-  | **TreeNode<T>**          |`Dispose()`| Disposes the node and all the child nodes.|`void`|
+  | **TreeNode&lt;T&gt;**          |`Dispose()`| Disposes the node and all the child nodes.|`void`|
 </details>
 
 ---
@@ -227,7 +227,7 @@
   #### Inheritence Methods
   | **Inheritence**            |**Method**|**Description**|**MethodType**|
   |--------------------------|----------|---------------|--------------|
-  | **TreeNode<T>**          |`Dispose()`| Disposes the node and all the child nodes.|`void`|
+  | **TreeNode&lt;T&gt;**          |`Dispose()`| Disposes the node and all the child nodes.|`void`|
 </details>
 
 ---
