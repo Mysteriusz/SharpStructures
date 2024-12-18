@@ -174,12 +174,11 @@
 </details>
 
 # Interfaces
+> [!IMPORTANT] 
+> TNode value must inherit [`TreeNode<T>`](#treenode) or be the [`TreeNode<T>`](#treenode) itself
 <a id="idatatree"></a>
 <details>
-  <summary>IDataTree&lt;T&gt;</summary>
-
-  > [!NOTE]
-  > TNode value must inherit [TreeNode<T>](#treenode) or be the [TreeNode<T>](#treenode) itself
+  <summary>IDataTree&lt;T, TNode&gt;</summary>
 
   #### Definition
   ``` csharp
