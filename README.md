@@ -147,9 +147,8 @@
 > 
 > static void Func<T>(TreeNode<T> node)
 > {
-> // Will cause an error
-> Debug.WriteLine(node.Left.Value);
-> Debug.WriteLine(node.Right.Value);
+>   Debug.WriteLine(node.Left.Value);
+>   Debug.WriteLine(node.Right.Value);
 > }
 >```
 > **Reason:** When casting a node to **TreeNode&lt;T&gt;**, the overridden properties in the derived class (e.g., **Left**, **Right**, **Parent**) are not accessible, as they cover the base class properties. **For example:**
@@ -352,4 +351,3 @@
 </details>
 
 ---
-**
