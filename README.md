@@ -153,12 +153,14 @@
 > Debug.WriteLine(node.Right.Value);
 > }
 >```
-> **Reason:** All the inherited **TreeNode&lt;T&gt;** parameters are set as new. 
+> **Reason:** All the inherited **TreeNode&lt;T&gt;** parameters are set as new. **Ex:**
 >```csharp
 > public new BSTNode<T>? Left { get; set; } = null;
 > public new BSTNode<T>? Right { get; set; } = null;
 > public new BSTNode<T>? Parent { get; set; } = null;
 >```
+
+---
 
 <details>
   <a id="treenode"></a>
