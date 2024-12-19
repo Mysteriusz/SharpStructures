@@ -147,7 +147,6 @@
 > 
 > static void Func<T>(TreeNode<T> node)
 > {
->   // Will cause an error
 >   Debug.WriteLine(node.Left.Value);
 >   Debug.WriteLine(node.Right.Value);
 > }
