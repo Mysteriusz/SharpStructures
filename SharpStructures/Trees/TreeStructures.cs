@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Data.SqlTypes;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SharpStructures.Trees
 {
@@ -358,6 +354,11 @@ namespace SharpStructures.Trees
         public new BSTNode<T>? Left { get; set; } = null;
         public new BSTNode<T>? Right { get; set; } = null;
         public new BSTNode<T>? Parent { get; set; } = null;
+
+        public TreeNode<T> ToTreeNode()
+        {
+            return new TreeNode<T>(Value, Left?.ToTreeNode(), Right?.ToTreeNode(), Parent?.ToTreeNode());
+        }
     }
     public class AVLNode<T> : TreeNode<T>
     {
@@ -372,5 +373,10 @@ namespace SharpStructures.Trees
         public new AVLNode<T>? Left { get; set; } = null;
         public new AVLNode<T>? Right { get; set; } = null;
         public new AVLNode<T>? Parent { get; set; } = null;
+
+        public TreeNode<T> ToTreeNode()
+        {
+            return new TreeNode<T>(Value, Left?.ToTreeNode(), Right?.ToTreeNode(), Parent?.ToTreeNode());
+        }
     }
 }

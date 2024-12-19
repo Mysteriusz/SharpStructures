@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SharpStructures.Trees
 {
@@ -45,8 +39,7 @@ namespace SharpStructures.Trees
         #region START Main Methods
         public void Add(T value)
         {
-            AVLNode<T> z = BSTInsert(value);
-            AVLInsert(z);
+            AVLInsert(BSTInsert(value));
         }
         public void AddRange(T[] values)
         {
