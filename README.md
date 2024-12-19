@@ -272,7 +272,7 @@
   | **LeafCount**    | Returns tree`s leaf nodes count.|`int32`|
   | **Levels**       | Returns tree`s level count.|`int32`|
   | **Count**        | Returns tree`s overall value count.|`int32`|
-  | **IsValis**        | Returns if tree is valid.|`bool`|
+  | **IsValid**        | Returns if tree is valid.|`bool`|
   | **IsEmpty**      | Returns if tree is empty.|`bool`|
   | **[int index]**  | Returns value T from the tree at the specified index.|`T`|
   #### Methods
