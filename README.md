@@ -11,8 +11,8 @@
   public BinarySearchTree(BSTNode<T>? root = null, Comparer<T>? comparer = null, TreeTraversalType traversalType = TreeTraversalType.InOrder)
   ```
 
-  #### Interface Parameter Implementations
-  | **Interface**            |**Parameter**|**Description**|**MethodType**|
+  #### Interface Property Implementations
+  | **Interface**            |**Property**|**Description**|**MethodType**|
   |--------------------------|-------------|---------------|--------------|
   | **IDataTree<T, TNode>**          |`Root`       | Returns the root of the tree.|[`BSTNode<T>?`](#bstnode)|
   | **IDataTree<T, TNode>**          |`TraversalType`| Returns tree's TreeTraversalType.|[`TreeTraversalType`](#treetraversaltype)|
@@ -28,22 +28,23 @@
   #### Interface Methods Implementations 
   | **Interface**            |**Method**                 |**Description**                                   |**MethodType**|
   |--------------------------|---------------------------|--------------------------------------------------|--------------|
-  | **IDataTree<T, TNode>**          |`Add(T value)`             | Inserts a value into the tree.                   |`void`        |
-  | **IDataTree<T, TNode>**          |`AddRange(T[] values)`     | Inserts an array of values into the tree.        |`void`        |
-  | **IDataTree<T, TNode>**          |`Remove(T value)`          | Removes a value from the tree.                   |`void`        |
-  | **IDataTree<T, TNode>**          |`RemoveRange(T[] values)`  | Removes an array of values from the tree.        |`void`        |
-  | **IDataTree<T, TNode>**          |`Clear()`                  | Clears all elements in the tree.                 |`void`        |
-  | **IDataTree<T, TNode>**          |`Contains(T value)`        | Checks if a value is present in the tree.        |`bool`        |
-  | **IDataTree<T, TNode>**          |`Find(Func<T, bool> predicate)`| Checks for a value with a specified condition.|`T`          |
+  | **IDataTree<T, TNode>**          |`Add(T value)`             | Inserts a value into the tree.                   |`void`|
+  | **IDataTree<T, TNode>**          |`AddRange(T[] values)`     | Inserts an array of values into the tree.        |`void`|
+  | **IDataTree<T, TNode>**          |`Remove(T value)`          | Removes a value from the tree.                   |`void`|
+  | **IDataTree<T, TNode>**          |`RemoveRange(T[] values)`  | Removes an array of values from the tree.        |`void`|
+  | **IDataTree<T, TNode>**          |`Clear()`                  | Clears all elements in the tree.                 |`void`|
+  | **IDataTree<T, TNode>**          |`Contains(T value)`        | Checks if a value is present in the tree.        |`bool`|
+  | **IDataTree<T, TNode>**          |`Find(Func<T, bool> predicate)`| Checks for a value with a specified condition.|`T`|
+  | **IDataTree<T, TNode>**          |`Find(Func<T, bool> predicate, BSTNode<T>? node)`| Checks for a value with a specified condition from specified node.|`T`|
   | **IDataTree<T, TNode>**          |`Clone()`                  | Creates a copy of the current instance of the tree.|[`IDataTree<T>`](#idatatree)|
   | **IDataTree<T, TNode>**          |`GetIndexValue(int index)` | Returns a value at a specified index using the current traversal type.|`T`|
-  | **IDataTree<T, TNode>**          |`Max()`                    | Returns the maximum value in the tree.           |`T`          |
+  | **IDataTree<T, TNode>**          |`Max()`                    | Returns the maximum value in the tree.           |`T`|
   | **IDataTree<T, TNode>**          |`Max(BSTNode<T> node)`    | Returns the maximum node starting from the specified node.|[`BSTNode<T>?`](#bstnode)|
-  | **IDataTree<T, TNode>**          |`Min()`                    | Returns the minimum value in the tree.           |`T`          |
+  | **IDataTree<T, TNode>**          |`Min()`                    | Returns the minimum value in the tree.           |`T`|
   | **IDataTree<T, TNode>**          |`Min(BSTNode<T> node)`    | Returns the minimum node starting from the specified node.|[`BSTNode<T>?`](#bstnode)|
-  | **IDataTree<T, TNode>**          |`Successor()`              | Returns the successor value of the root node.    |`T`          |
+  | **IDataTree<T, TNode>**          |`Successor()`              | Returns the successor value of the root node.    |`T`|
   | **IDataTree<T, TNode>**          |`Successor(BSTNode<T> node)`| Returns the successor node of the specified node.|[`BSTNode<T>?`](#bstnode)|
-  | **IDataTree<T, TNode>**          |`Predecessor()`            | Returns the predecessor value of the root node.  |`T`          |
+  | **IDataTree<T, TNode>**          |`Predecessor()`            | Returns the predecessor value of the root node.  |`T`|
   | **IDataTree<T, TNode>**          |`Predecessor(BSTNode<T> node)`| Returns the predecessor node of the specified node.|[`BSTNode<T>?`](#bstnode)|
   | **IDataTree<T, TNode>**          |`GetRange(int index, int count)`| Returns a range of values as `IEnumerable<T>` from the specified index.|[`IEnumerable<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0)|
   | **IDataTree<T, TNode>**          |`Traverse()`               | Returns all values using the specified traversal method.|[`IEnumerable<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0)|
@@ -61,6 +62,9 @@
   | **IDataTree<T, TNode>**          |`ToStack()`                | Returns `Stack<T>` of all values using the current traversal type.|[`Stack<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.stack-1?view=net-9.0)|
   | **IDataTree<T, TNode>**          |`ToQueue()`                | Returns `Queue<T>` of all values using the current traversal type.|[`Queue<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.queue-1?view=net-9.0)|
 </details>
+
+---
+
 <details>
   <summary>AVLTree&lt;T&gt;</summary>
     
@@ -73,8 +77,8 @@
   public AVLTree(AVLNode<T>? root = null, Comparer<T>? comparer = null, TreeTraversalType traversalType = TreeTraversalType.InOrder)
   ```
 
-  #### Interface Parameter Implementations
-  | **Interface**            |**Parameter**|**Description**|**MethodType**|
+  #### Interface Property Implementations
+  | **Interface**            |**Property**|**Description**|**MethodType**|
   |--------------------------|-------------|---------------|--------------|
   | **IDataTree<T, TNode>**          |`Root`       | Returns the root of the tree.|[`AVLNode<T>?`](#avlnode)|
   | **IDataTree<T, TNode>**          |`TraversalType`| Returns tree's TreeTraversalType.|[`TreeTraversalType`](#treetraversaltype)|
@@ -90,22 +94,23 @@
   #### Interface Methods Implementations 
   | **Interface**            |**Method**                 |**Description**                                   |**MethodType**|
   |--------------------------|---------------------------|--------------------------------------------------|--------------|
-  | **IDataTree<T, TNode>**          |`Add(T value)`             | Inserts a value into the tree.                   |`void`        |
-  | **IDataTree<T, TNode>**          |`AddRange(T[] values)`     | Inserts an array of values into the tree.        |`void`        |
-  | **IDataTree<T, TNode>**          |`Remove(T value)`          | Removes a value from the tree.                   |`void`        |
-  | **IDataTree<T, TNode>**          |`RemoveRange(T[] values)`  | Removes an array of values from the tree.        |`void`        |
-  | **IDataTree<T, TNode>**          |`Clear()`                  | Clears all elements in the tree.                 |`void`        |
-  | **IDataTree<T, TNode>**          |`Contains(T value)`        | Checks if a value is present in the tree.        |`bool`        |
-  | **IDataTree<T, TNode>**          |`Find(Func<T, bool> predicate)`| Checks for a value with a specified condition.|`T`          |
+  | **IDataTree<T, TNode>**          |`Add(T value)`             | Inserts a value into the tree.                   |`void`|
+  | **IDataTree<T, TNode>**          |`AddRange(T[] values)`     | Inserts an array of values into the tree.        |`void`|
+  | **IDataTree<T, TNode>**          |`Remove(T value)`          | Removes a value from the tree.                   |`void`|
+  | **IDataTree<T, TNode>**          |`RemoveRange(T[] values)`  | Removes an array of values from the tree.        |`void`|
+  | **IDataTree<T, TNode>**          |`Clear()`                  | Clears all elements in the tree.                 |`void`|
+  | **IDataTree<T, TNode>**          |`Contains(T value)`        | Checks if a value is present in the tree.        |`bool`|
+  | **IDataTree<T, TNode>**          |`Find(Func<T, bool> predicate)`| Checks for a value with a specified condition.|`T`|
+  | **IDataTree<T, TNode>**          |`Find(Func<T, bool> predicate, AVLNode<T>? node)`| Checks for a value with a specified condition from specified node.|`T`|
   | **IDataTree<T, TNode>**          |`Clone()`                  | Creates a copy of the current instance of the tree.|[`IDataTree<T>`](#idatatree)|
   | **IDataTree<T, TNode>**          |`GetIndexValue(int index)` | Returns a value at a specified index using the current traversal type.|`T`|
-  | **IDataTree<T, TNode>**          |`Max()`                    | Returns the maximum value in the tree.           |`T`          |
+  | **IDataTree<T, TNode>**          |`Max()`                    | Returns the maximum value in the tree.           |`T`|
   | **IDataTree<T, TNode>**          |`Max(AVLNode<T> node)`    | Returns the maximum node starting from the specified node.|[`AVLNode<T>?`](#avlnode)|
-  | **IDataTree<T, TNode>**          |`Min()`                    | Returns the minimum value in the tree.           |`T`          |
+  | **IDataTree<T, TNode>**          |`Min()`                    | Returns the minimum value in the tree.           |`T`|
   | **IDataTree<T, TNode>**          |`Min(AVLNode<T> node)`    | Returns the minimum node starting from the specified node.|[`AVLNode<T>?`](#avlnode)|
-  | **IDataTree<T, TNode>**          |`Successor()`              | Returns the successor value of the root node.    |`T`          |
+  | **IDataTree<T, TNode>**          |`Successor()`              | Returns the successor value of the root node.    |`T`|
   | **IDataTree<T, TNode>**          |`Successor(AVLNode<T> node)`| Returns the successor node of the specified node.|[`AVLNode<T>?`](#avlnode)|
-  | **IDataTree<T, TNode>**          |`Predecessor()`            | Returns the predecessor value of the root node.  |`T`          |
+  | **IDataTree<T, TNode>**          |`Predecessor()`            | Returns the predecessor value of the root node.  |`T`|
   | **IDataTree<T, TNode>**          |`Predecessor(AVLNode<T> node)`| Returns the predecessor node of the specified node.|[`AVLNode<T>?`](#avlnode)|
   | **IDataTree<T, TNode>**          |`GetRange(int index, int count)`| Returns a range of values as `IEnumerable<T>` from the specified index.|[`IEnumerable<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0)|
   | **IDataTree<T, TNode>**          |`Traverse()`               | Returns all values using the specified traversal method.|[`IEnumerable<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=net-9.0)|
@@ -124,7 +129,39 @@
   | **IDataTree<T, TNode>**          |`ToQueue()`                | Returns `Queue<T>` of all values using the current traversal type.|[`Queue<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.queue-1?view=net-9.0)|
 </details>
 
+---
+
 # Structures
+> [!WARNING] 
+> You cannot access node`s children or parents after casting it to **TreeNode&lt;T&gt;** from other node types.
+> ```csharp
+> BSTNode<int> node = new BSTNode<int>(1, new BSTNode<int>(0), new BSTNode<int>(2));
+>
+> // Will cause an error
+> Func(node as TreeNode<int>);
+> // OR
+> Func((TreeNode<int>)node);
+>
+> // No errors
+> Func(node.ToTreeNode());
+> 
+> static void Func<T>(TreeNode<T> node)
+> {
+> // Will cause an error
+> Debug.WriteLine(node.Left.Value);
+> Debug.WriteLine(node.Right.Value);
+> }
+>```
+> **Reason:** When casting a node to **TreeNode&lt;T&gt;**, the overridden properties in the derived class (e.g., **Left**, **Right**, **Parent**) are not accessible, as they cover the base class properties. **For example:**
+>```csharp
+> public new BSTNode<T>? Left { get; set; } = null;
+> public new BSTNode<T>? Right { get; set; } = null;
+> public new BSTNode<T>? Parent { get; set; } = null;
+>```
+> Instead you should use `.ToTreeNode()` method provided in each **Node** structure to safely cast nodes to **TreeNode&lt;T&gt;**
+
+---
+
 <details>
   <a id="treenode"></a>
   <summary>TreeNode&lt;T&gt;</summary>
@@ -138,8 +175,8 @@
   public TreeNode(T value, TreeNode<T>? left = null, TreeNode<T>? right = null, TreeNode<T>? parent = null)
   ```
 
-  #### Parameters
-  | **Parameter**   |**Description**|**ValueType**|
+  #### Properties
+  | **Property**   |**Description**|**ValueType**|
   |-----------------|---------------|-------------|
   | **Value**       | Returns the value of the node.|`T`|
   | **IsLeaf**      | Returns if node is marked as leaf.|`bool`|
@@ -151,6 +188,9 @@
   |--------------------------|----------|---------------|--------------|
   | **IDisposable**          |`Dispose()`| Disposes the node and all the child nodes.|`void`|
 </details>
+
+---
+
 <details>
   <a id="bstnode"></a>
   <summary>BSTNode&lt;T&gt;</summary>
@@ -164,14 +204,18 @@
   public BSTNode(T value, BSTNode<T>? left = null, BSTNode<T>? right = null, BSTNode<T>? parent = null)
   ```
 
-  #### Parameters
-  | **Parameter**   |**Description**|**ValueType**|
+  #### Properties
+  | **Property**   |**Description**|**ValueType**|
   |-----------------|---------------|-------------|
   | **Left**        | Returns left child of the node.|[`BSTNode<T>?`](#bstnode)|
   | **Right**       | Returns right child of the node.|[`BSTNode<T>?`](#bstnode)|
   | **Parent**      | Returns parent of the node.|[`BSTNode<T>?`](#bstnode)|
-  #### Inheritence Parameters
-  | **Parameter**   |**Description**|**ValueType**|
+  #### Methods
+  | **Category**            |**Method**|**Description**|**MethodType**|
+  |-------------------------|----------|---------------|--------------|
+  | **Casting**             |`.ToTreeNode()`| Safely casts node to `TreeNode<T>` with all its subnodes. |[`TreeNode<T>`](#treenode)|
+  #### Inheritence Properties
+  | **Property**   |**Description**|**ValueType**|
   |-----------------|---------------|-------------|
   | **Value**       | Returns the value of the node.|`T`|
   | **IsLeaf**      | Returns if node is marked as leaf.|`bool`|
@@ -181,8 +225,11 @@
   #### Inheritence Methods
   | **Inheritence**            |**Method**|**Description**|**MethodType**|
   |--------------------------|----------|---------------|--------------|
-  | **TreeNode<T>**          |`Dispose()`| Disposes the node and all the child nodes.|`void`|
+  | **TreeNode&lt;T&gt;**          |`Dispose()`| Disposes the node and all the child nodes.|`void`|
 </details>
+
+---
+
 <details>
   <a id="avlnode"></a>
   <summary>AVLNode&lt;T&gt;</summary>
@@ -196,15 +243,19 @@
   public AVLNode(T value, AVLNode<T>? left = null, AVLNode<T>? right = null, AVLNode<T>? parent = null)
   ```
 
-  #### Parameters
-  | **Parameter**   |**Description**|**ValueType**|
+  #### Properties
+  | **Property**   |**Description**|**ValueType**|
   |-----------------|---------------|-------------|
   | **BalanceFactor**| Returns node`s current balance factor.|`int32`|
   | **Left**        | Returns left child of the node.|[`AVLNode<T>?`](#avlnode)|
   | **Right**       | Returns right child of the node.|[`AVLNode<T>?`](#avlnode)|
   | **Parent**      | Returns parent of the node.|[`AVLNode<T>?`](#avlnode)|
-  #### Inheritence Parameters
-  | **Parameter**   |**Description**|**ValueType**|
+  #### Methods
+  | **Category**            |**Method**|**Description**|**MethodType**|
+  |-------------------------|----------|---------------|--------------|
+  | **Casting**             |`.ToTreeNode()`| Safely casts node to `TreeNode<T>` with all its subnodes. |[`TreeNode<T>`](#treenode)|
+  #### Inheritence Properties
+  | **Property**   |**Description**|**ValueType**|
   |-----------------|---------------|-------------|
   | **Value**       | Returns the value of the node.|`T`|
   | **IsLeaf**      | Returns if node is marked as leaf.|`bool`|
@@ -214,8 +265,11 @@
   #### Inheritence Methods
   | **Inheritence**            |**Method**|**Description**|**MethodType**|
   |--------------------------|----------|---------------|--------------|
-  | **TreeNode<T>**          |`Dispose()`| Disposes the node and all the child nodes.|`void`|
+  | **TreeNode&lt;T&gt;**          |`Dispose()`| Disposes the node and all the child nodes.|`void`|
 </details>
+
+---
+
 <details>
   <a id="treetraversaltype"></a>
   <summary>TreeTraversalType</summary>
@@ -232,6 +286,8 @@
   | **PostOrder**      | PostOrder traversal type.|`2`|
 </details>
 
+---
+
 # Interfaces
 > [!IMPORTANT] 
 > TNode value must inherit [`TreeNode<T>`](#treenode) or be the [`TreeNode<T>`](#treenode) itself
@@ -244,8 +300,8 @@
   public interface IDataTree<T, TNode> where TNode : TreeNode<T>
   ```
 
-  #### Parameters
-  | **Parameter**    |**Description**|**ValueType**|
+  #### Properties
+  | **Property**    |**Description**|**ValueType**|
   |------------------|---------------|-------------|
   | **Root**         | Returns the root of the tree.|[`TNode?`](#treenode)|
   | **TraversalType**| Returns tree`s TreeTraversalType.|[`TreeTraversalType`](#treetraversaltype)|
@@ -254,7 +310,7 @@
   | **LeafCount**    | Returns tree`s leaf nodes count.|`int32`|
   | **Levels**       | Returns tree`s level count.|`int32`|
   | **Count**        | Returns tree`s overall value count.|`int32`|
-  | **IsValis**        | Returns if tree is valid.|`bool`|
+  | **IsValid**        | Returns if tree is valid.|`bool`|
   | **IsEmpty**      | Returns if tree is empty.|`bool`|
   | **[int index]**  | Returns value T from the tree at the specified index.|`T`|
   #### Methods
@@ -267,6 +323,7 @@
   | **Clearing**            |`Clear()`| Clears all elements in the tree.|`void`|
   | **Search**              |`Contains(T value)`| Checks if a value is present in the tree.|`bool`|
   |                         |`Find(Func<T, bool> predicate)`| Checks for a value with specified condition.|`T`|
+  |                         |`Find(Func<T, bool> predicate, TNode? node)`| Checks for a value with specified condition from specified node.|`T`|
   | **Cloning**             |`Clone()`| Creates a copy of the current instance of the tree.|[`IDataTree<T>`](#idatatree)|
   | **Index Access**        |`GetIndexValue(int index)`| Returns a value at a specified index using the current traversal type.|`T`|
   | **Min/Max**             |`Max()`| Returns the maximum value in the tree.|`T`|
@@ -293,3 +350,6 @@
   |                         |`ToStack()`| Returns `Stack<T>` of all values using the current traversal type.|[`Stack<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.stack-1?view=net-9.0)|
   |                         |`ToQueue()`| Returns `Queue<T>` of all values using the current traversal type.|[`Queue<T>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.queue-1?view=net-9.0)|
 </details>
+
+---
+**
