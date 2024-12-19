@@ -290,7 +290,6 @@
   | **Right**       | Returns right child of the node.|[`RBTNode<T>?`](#rbtnode)|
   | **Parent**      | Returns parent of the node.|[`RBTNode<T>?`](#rbtnode)|
   | **[int index]**| Returns child from index: `0`: **Left**, `1`: **Right**.|[`RBTNode<T>?`](#rbtnode)|
-  | **NIL**        | Static value used for RBT operations.|[`RBTNode<T>`](#rbtnode)|
   #### Methods
   | **Category**            |**Method**|**Description**|**MethodType**|
   |-------------------------|----------|---------------|--------------|
