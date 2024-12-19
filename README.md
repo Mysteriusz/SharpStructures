@@ -11,8 +11,8 @@
   public BinarySearchTree(BSTNode<T>? root = null, Comparer<T>? comparer = null, TreeTraversalType traversalType = TreeTraversalType.InOrder)
   ```
 
-  #### Interface Parameter Implementations
-  | **Interface**            |**Parameter**|**Description**|**MethodType**|
+  #### Interface Property Implementations
+  | **Interface**            |**Property**|**Description**|**MethodType**|
   |--------------------------|-------------|---------------|--------------|
   | **IDataTree<T, TNode>**          |`Root`       | Returns the root of the tree.|[`BSTNode<T>?`](#bstnode)|
   | **IDataTree<T, TNode>**          |`TraversalType`| Returns tree's TreeTraversalType.|[`TreeTraversalType`](#treetraversaltype)|
@@ -77,8 +77,8 @@
   public AVLTree(AVLNode<T>? root = null, Comparer<T>? comparer = null, TreeTraversalType traversalType = TreeTraversalType.InOrder)
   ```
 
-  #### Interface Parameter Implementations
-  | **Interface**            |**Parameter**|**Description**|**MethodType**|
+  #### Interface Property Implementations
+  | **Interface**            |**Property**|**Description**|**MethodType**|
   |--------------------------|-------------|---------------|--------------|
   | **IDataTree<T, TNode>**          |`Root`       | Returns the root of the tree.|[`AVLNode<T>?`](#avlnode)|
   | **IDataTree<T, TNode>**          |`TraversalType`| Returns tree's TreeTraversalType.|[`TreeTraversalType`](#treetraversaltype)|
@@ -133,7 +133,7 @@
 
 # Structures
 > [!WARNING] 
-> You cannot access nodes children or parents after casting it to **TreeNode&lt;T&gt;** from other nodes.
+> You cannot access node`s children or parents after casting it to **TreeNode&lt;T&gt;** from other node types.
 > ```csharp
 > BSTNode<int> node = new BSTNode<int>(1, new BSTNode<int>(0), new BSTNode<int>(2));
 >
@@ -148,18 +148,18 @@
 > }
 > static void Func<T>(TreeNode<T> node)
 > {
-> // Will produce an error
+> // Will cause an error
 > Debug.WriteLine(node.Left.Value);
 > Debug.WriteLine(node.Right.Value);
 > }
 >```
-> **Reason:** ALl the nodes are overrides of the original **TreeNode&lt;T&gt;** values which will cause them to not automatically set when casting to **TreeNode&lt;T&gt;**. **Ex:**
+> **Reason:** When casting a node to **TreeNode&lt;T&gt;**, the overridden properties in the derived class (e.g., **Left**, **Right**, **Parent**) are not accessible, as they cover the base class properties. **For example:**
 >```csharp
 > public new BSTNode<T>? Left { get; set; } = null;
 > public new BSTNode<T>? Right { get; set; } = null;
 > public new BSTNode<T>? Parent { get; set; } = null;
 >```
-> Instead you should use cast `.ToTreeNode()` provided in each **Node** structure to safely cast nodes to **TreeNode&lt;T&gt;**
+> Instead you should use `.ToTreeNode()` method provided in each **Node** structure to safely cast nodes to **TreeNode&lt;T&gt;**
 
 ---
 
@@ -176,8 +176,8 @@
   public TreeNode(T value, TreeNode<T>? left = null, TreeNode<T>? right = null, TreeNode<T>? parent = null)
   ```
 
-  #### Parameters
-  | **Parameter**   |**Description**|**ValueType**|
+  #### Properties
+  | **Property**   |**Description**|**ValueType**|
   |-----------------|---------------|-------------|
   | **Value**       | Returns the value of the node.|`T`|
   | **IsLeaf**      | Returns if node is marked as leaf.|`bool`|
@@ -205,8 +205,8 @@
   public BSTNode(T value, BSTNode<T>? left = null, BSTNode<T>? right = null, BSTNode<T>? parent = null)
   ```
 
-  #### Parameters
-  | **Parameter**   |**Description**|**ValueType**|
+  #### Properties
+  | **Property**   |**Description**|**ValueType**|
   |-----------------|---------------|-------------|
   | **Left**        | Returns left child of the node.|[`BSTNode<T>?`](#bstnode)|
   | **Right**       | Returns right child of the node.|[`BSTNode<T>?`](#bstnode)|
@@ -215,8 +215,8 @@
   | **Category**            |**Method**|**Description**|**MethodType**|
   |-------------------------|----------|---------------|--------------|
   | **Casting**             |`.ToTreeNode()`| Safely casts node to `TreeNode<T>` with all its subnodes. |[`TreeNode<T>`](#treenode)|
-  #### Inheritence Parameters
-  | **Parameter**   |**Description**|**ValueType**|
+  #### Inheritence Properties
+  | **Property**   |**Description**|**ValueType**|
   |-----------------|---------------|-------------|
   | **Value**       | Returns the value of the node.|`T`|
   | **IsLeaf**      | Returns if node is marked as leaf.|`bool`|
@@ -244,8 +244,8 @@
   public AVLNode(T value, AVLNode<T>? left = null, AVLNode<T>? right = null, AVLNode<T>? parent = null)
   ```
 
-  #### Parameters
-  | **Parameter**   |**Description**|**ValueType**|
+  #### Properties
+  | **Property**   |**Description**|**ValueType**|
   |-----------------|---------------|-------------|
   | **BalanceFactor**| Returns node`s current balance factor.|`int32`|
   | **Left**        | Returns left child of the node.|[`AVLNode<T>?`](#avlnode)|
@@ -255,8 +255,8 @@
   | **Category**            |**Method**|**Description**|**MethodType**|
   |-------------------------|----------|---------------|--------------|
   | **Casting**             |`.ToTreeNode()`| Safely casts node to `TreeNode<T>` with all its subnodes. |[`TreeNode<T>`](#treenode)|
-  #### Inheritence Parameters
-  | **Parameter**   |**Description**|**ValueType**|
+  #### Inheritence Properties
+  | **Property**   |**Description**|**ValueType**|
   |-----------------|---------------|-------------|
   | **Value**       | Returns the value of the node.|`T`|
   | **IsLeaf**      | Returns if node is marked as leaf.|`bool`|
@@ -301,8 +301,8 @@
   public interface IDataTree<T, TNode> where TNode : TreeNode<T>
   ```
 
-  #### Parameters
-  | **Parameter**    |**Description**|**ValueType**|
+  #### Properties
+  | **Property**    |**Description**|**ValueType**|
   |------------------|---------------|-------------|
   | **Root**         | Returns the root of the tree.|[`TNode?`](#treenode)|
   | **TraversalType**| Returns tree`s TreeTraversalType.|[`TreeTraversalType`](#treetraversaltype)|
@@ -353,3 +353,4 @@
 </details>
 
 ---
+**
