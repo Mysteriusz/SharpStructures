@@ -132,6 +132,34 @@
 ---
 
 # Structures
+> [!WARNING] 
+> You cannot access nodes children or parents after casting it to **TreeNode&lt;T&gt;** from other nodes.
+> ```csharp
+> BSTNode<int> node = new BSTNode<int>(1, new BSTNode<int>(0), new BSTNode<int>(2));
+>
+> Func(node);
+> Func(node as TreeNode<int>);
+>
+> static void Func<T>(BSTNode<T> node)
+> {
+> // Will produce an error
+> Debug.WriteLine(node.Left.Value);
+> Debug.WriteLine(node.Right.Value);
+> }
+> static void Func<T>(TreeNode<T> node)
+> {
+> // Wont produce any errors
+> Debug.WriteLine(node.Left.Value);
+> Debug.WriteLine(node.Right.Value);
+> }
+>```
+> **Reason:** All the inherited **TreeNode&lt;T&gt;** parameters are set as new. 
+>```csharp
+> public new BSTNode<T>? Left { get; set; } = null;
+> public new BSTNode<T>? Right { get; set; } = null;
+> public new BSTNode<T>? Parent { get; set; } = null;
+>```
+
 <details>
   <a id="treenode"></a>
   <summary>TreeNode&lt;T&gt;</summary>
