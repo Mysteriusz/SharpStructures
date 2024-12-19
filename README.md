@@ -137,15 +137,14 @@
 > ```csharp
 > BSTNode<int> node = new BSTNode<int>(1, new BSTNode<int>(0), new BSTNode<int>(2));
 >
-> Func(node);
+> // Will cause an error
 > Func(node as TreeNode<int>);
+> // OR
+> Func((TreeNode<int>)node);
 >
-> static void Func<T>(BSTNode<T> node)
-> {
-> // Wont produce any errors
-> Debug.WriteLine(node.Left.Value);
-> Debug.WriteLine(node.Right.Value);
-> }
+> // No errors
+> Func(node.ToTreeNode());
+> 
 > static void Func<T>(TreeNode<T> node)
 > {
 > // Will cause an error
