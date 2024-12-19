@@ -321,8 +321,6 @@
   | **PostOrder**      | PostOrder traversal type.|`2`|
 </details>
 
----
-
 <details>
   <a id="rbtcolor"></a>
   <summary>RBTColor</summary>
