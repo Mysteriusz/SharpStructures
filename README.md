@@ -280,7 +280,7 @@
   | **Property**   |**Description**|**ValueType**|
   |-----------------|---------------|-------------|
   | **IsNil**| Returns if a node is marked as NIL.|`bool`|
-  | **RBTColor**| Returns if a node is marked as NIL.|[`RBTColor`](#rbtcolor)|
+  | **Color**| Returns if a node is marked as NIL.|[`RBTColor`](#rbtcolor)|
   | **Left**        | Returns left child of the node.|[`RBTNode<T>?`](#rbtnode)|
   | **Right**       | Returns right child of the node.|[`RBTNode<T>?`](#rbtnode)|
   | **Parent**      | Returns parent of the node.|[`RBTNode<T>?`](#rbtnode)|
