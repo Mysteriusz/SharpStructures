@@ -294,6 +294,11 @@ namespace SharpStructures.Trees
         /// </summary>
         PostOrder,
     }
+    public enum RBTColor
+    {
+        Black,
+        Red
+    }
 
     /// <summary>
     /// Class representing a tree node holding data to its left and right child (<see cref="TreeNode{T}"/>).<br />
@@ -373,6 +378,52 @@ namespace SharpStructures.Trees
         public new AVLNode<T>? Left { get; set; } = null;
         public new AVLNode<T>? Right { get; set; } = null;
         public new AVLNode<T>? Parent { get; set; } = null;
+
+        public TreeNode<T> ToTreeNode()
+        {
+            return new TreeNode<T>(Value, Left?.ToTreeNode(), Right?.ToTreeNode(), Parent?.ToTreeNode());
+        }
+    }
+    public class RBTNode<T> : TreeNode<T>
+    {
+        public static RBTNode<T> NIL = new RBTNode<T>(default!, isNil: true);
+
+        public RBTNode(T value, RBTNode<T>? left = null, RBTNode<T>? right = null, RBTNode<T>? parent = null, bool isNil = false) : base(value)
+        {
+            Left = isNil ? null : left ?? NIL;
+            Right = isNil ? null : right ?? NIL;
+
+            Parent = parent;
+        }
+
+        public bool IsNIL { get; private set; } = false;
+        public RBTColor Color { get; set; } = RBTColor.Black;
+        
+        public new RBTNode<T>? Left { get; set; }
+        public new RBTNode<T>? Right { get; set; }
+        public new RBTNode<T>? Parent { get; set; }
+
+        public RBTNode<T>? this[int index]
+        {
+            get
+            {
+                if (index == 0)
+                    return Left;
+                else if (index == 1)
+                    return Right;
+                else
+                    throw new IndexOutOfRangeException();
+            }
+            set
+            {
+                if (index == 0)
+                    Left = value;
+                else if (index == 1)
+                    Right = value;
+                else
+                    throw new IndexOutOfRangeException();
+            }
+        }
 
         public TreeNode<T> ToTreeNode()
         {
