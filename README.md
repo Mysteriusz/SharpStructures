@@ -276,15 +276,21 @@
   public RBTNode(T value, RBTNode<T>? left = null, RBTNode<T>? right = null, RBTNode<T>? parent = null, bool isNil = false)
   ```
 
+  #### Static
+  ```csharp
+  public static RBTNode<T> NIL = new RBTNode<T>(default!, isNil: true);
+  ```
+
   #### Properties
   | **Property**   |**Description**|**ValueType**|
   |-----------------|---------------|-------------|
   | **IsNil**| Returns if a node is marked as NIL.|`bool`|
-  | **Color**| Returns if a node is marked as NIL.|[`RBTColor`](#rbtcolor)|
+  | **Color**| Returns node`s color.|[`RBTColor`](#rbtcolor)|
   | **Left**        | Returns left child of the node.|[`RBTNode<T>?`](#rbtnode)|
   | **Right**       | Returns right child of the node.|[`RBTNode<T>?`](#rbtnode)|
   | **Parent**      | Returns parent of the node.|[`RBTNode<T>?`](#rbtnode)|
   | **[int index]**| Returns child from index: `0`: **Left**, `1`: **Right**.|[`RBTNode<T>?`](#rbtnode)|
+  | **NIL**        | Static value used for RBT operations.|[`RBTNode<T>`](#rbtnode)|
   #### Methods
   | **Category**            |**Method**|**Description**|**MethodType**|
   |-------------------------|----------|---------------|--------------|
