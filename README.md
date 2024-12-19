@@ -270,6 +270,48 @@
 ---
 
 <details>
+  <a id="rbtnode"></a>
+  <summary>RBTNode&lt;T&gt;</summary>
+  
+  #### Definition
+  ```csharp
+  public class RBTNode<T> : TreeNode<T>
+  ```
+  #### Constructor
+  ```csharp
+  public RBTNode(T value, RBTNode<T>? left = null, RBTNode<T>? right = null, RBTNode<T>? parent = null, bool isNil = false)
+  ```
+
+  #### Properties
+  | **Property**   |**Description**|**ValueType**|
+  |-----------------|---------------|-------------|
+  | **IsNil**| Returns if a node is marked as NIL.|`bool`|
+  | **RBTColor**| Returns if a node is marked as NIL.|[`RBTColor`](#rbtcolor)|
+  | **Left**        | Returns left child of the node.|[`RBTNode<T>?`](#rbtnode)|
+  | **Right**       | Returns right child of the node.|[`RBTNode<T>?`](#rbtnode)|
+  | **Parent**      | Returns parent of the node.|[`RBTNode<T>?`](#rbtnode)|
+  | **[int index]**| Returns child from index: `0`: **Left**, `1`: **Right**.|[`RBTNode<T>?`](#rbtnode)|
+  #### Methods
+  | **Category**            |**Method**|**Description**|**MethodType**|
+  |-------------------------|----------|---------------|--------------|
+  | **Casting**             |`.ToTreeNode()`| Safely casts node to `TreeNode<T>` with all its subnodes. |[`TreeNode<T>`](#treenode)|
+  #### Inheritence Properties
+  | **Property**   |**Description**|**ValueType**|
+  |-----------------|---------------|-------------|
+  | **Value**       | Returns the value of the node.|`T`|
+  | **IsLeaf**      | Returns if node is marked as leaf.|`bool`|
+  | **Left**        | Returns left child of the node.|[`TreeNode<T>?`](#treenode)|
+  | **Right**       | Returns right child of the node.|[`TreeNode<T>?`](#treenode)|
+  | **Parent**      | Returns parent of the node.|[`TreeNode<T>?`](#treenode)|
+  #### Inheritence Methods
+  | **Inheritence**            |**Method**|**Description**|**MethodType**|
+  |--------------------------|----------|---------------|--------------|
+  | **TreeNode&lt;T&gt;**          |`Dispose()`| Disposes the node and all the child nodes.|`void`|
+</details>
+
+---
+
+<details>
   <a id="treetraversaltype"></a>
   <summary>TreeTraversalType</summary>
   
@@ -283,6 +325,23 @@
   | **InOrder**       | InOrder traversal type.|`0`|
   | **PreOrder**        | PreOrder traversal type.|`1`|
   | **PostOrder**      | PostOrder traversal type.|`2`|
+</details>
+
+---
+
+<details>
+  <a id="rbtcolor"></a>
+  <summary>RBTColor</summary>
+  
+  #### Definition
+  ```csharp
+  public enum RBTColor
+  ```
+  #### Fields
+  | **Name**   |**Description**|**Value**|
+  |-----------------|---------------|-------------|
+  | **Black**       | Black node color.|`0`|
+  | **Red**        | Red node color.|`1`|
 </details>
 
 ---
