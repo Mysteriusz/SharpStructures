@@ -153,12 +153,13 @@
 > Debug.WriteLine(node.Right.Value);
 > }
 >```
-> **Reason:** All the inherited **TreeNode&lt;T&gt;** parameters are set as new. **Ex:**
+> **Reason:** ALl the nodes are overrides of the original **TreeNode&lt;T&gt;** values which will cause them to not automatically set when casting to **TreeNode&lt;T&gt;**. **Ex:**
 >```csharp
 > public new BSTNode<T>? Left { get; set; } = null;
 > public new BSTNode<T>? Right { get; set; } = null;
 > public new BSTNode<T>? Parent { get; set; } = null;
 >```
+> Instead you should use cast `.ToTreeNode()` provided in each **Node** structure to safely cast nodes to **TreeNode&lt;T&gt;**
 
 ---
 
@@ -210,6 +211,10 @@
   | **Left**        | Returns left child of the node.|[`BSTNode<T>?`](#bstnode)|
   | **Right**       | Returns right child of the node.|[`BSTNode<T>?`](#bstnode)|
   | **Parent**      | Returns parent of the node.|[`BSTNode<T>?`](#bstnode)|
+  #### Methods
+  | **Category**            |**Method**|**Description**|**MethodType**|
+  |-------------------------|----------|---------------|--------------|
+  | **Casting**             |`.ToTreeNode()`| Safely casts node to `TreeNode<T>` with all its subnodes. |[`TreeNode<T>`](#treenode)|
   #### Inheritence Parameters
   | **Parameter**   |**Description**|**ValueType**|
   |-----------------|---------------|-------------|
@@ -246,6 +251,10 @@
   | **Left**        | Returns left child of the node.|[`AVLNode<T>?`](#avlnode)|
   | **Right**       | Returns right child of the node.|[`AVLNode<T>?`](#avlnode)|
   | **Parent**      | Returns parent of the node.|[`AVLNode<T>?`](#avlnode)|
+  #### Methods
+  | **Category**            |**Method**|**Description**|**MethodType**|
+  |-------------------------|----------|---------------|--------------|
+  | **Casting**             |`.ToTreeNode()`| Safely casts node to `TreeNode<T>` with all its subnodes. |[`TreeNode<T>`](#treenode)|
   #### Inheritence Parameters
   | **Parameter**   |**Description**|**ValueType**|
   |-----------------|---------------|-------------|
