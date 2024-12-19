@@ -1,3 +1,6 @@
+# Documentation
+https://revenants-organization.gitbook.io/sharp-structures-documentation
+
 # Trees
 <details>
   <summary>BinarySearchTree&lt;T&gt;</summary>
