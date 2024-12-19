@@ -142,13 +142,13 @@
 >
 > static void Func<T>(BSTNode<T> node)
 > {
-> // Will produce an error
+> // Wont produce any errors
 > Debug.WriteLine(node.Left.Value);
 > Debug.WriteLine(node.Right.Value);
 > }
 > static void Func<T>(TreeNode<T> node)
 > {
-> // Wont produce any errors
+> // Will produce an error
 > Debug.WriteLine(node.Left.Value);
 > Debug.WriteLine(node.Right.Value);
 > }
