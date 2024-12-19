@@ -188,8 +188,6 @@
   | **IDisposable**          |`Dispose()`| Disposes the node and all the child nodes.|`void`|
 </details>
 
----
-
 <details>
   <a id="bstnode"></a>
   <summary>BSTNode&lt;T&gt;</summary>
@@ -226,8 +224,6 @@
   |--------------------------|----------|---------------|--------------|
   | **TreeNode&lt;T&gt;**          |`Dispose()`| Disposes the node and all the child nodes.|`void`|
 </details>
-
----
 
 <details>
   <a id="avlnode"></a>
@@ -266,8 +262,6 @@
   |--------------------------|----------|---------------|--------------|
   | **TreeNode&lt;T&gt;**          |`Dispose()`| Disposes the node and all the child nodes.|`void`|
 </details>
-
----
 
 <details>
   <a id="rbtnode"></a>
