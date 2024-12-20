@@ -35,7 +35,7 @@ namespace SharpStructures.Trees
         public int Height => GetHeightRec(Root);
         public int Levels => Height + 1;
 
-        public bool IsValid => IsValidRec(Root);
+        public bool IsValid => Root == null || Root.Color == RBTColor.Black && IsValidRec(Root);
         public bool IsEmpty => Root == null;
 
         public T this[int index] => GetIndexValue(index);
@@ -571,10 +571,14 @@ namespace SharpStructures.Trees
         }
         private bool IsValidRec(RBTNode<T>? node)
         {
-            if (node == null || node.IsNIL)
+            if (node == null)
                 return true;
 
-
+            if (node.Color == RBTColor.Red)
+            {
+                if (node.Left != null && node.Left.Color == RBTColor.Red) return false;
+                if (node.Right != null && node.Right.Color == RBTColor.Red) return false;
+            }
 
             return IsValidRec(node.Left) && IsValidRec(node.Right);
         }
