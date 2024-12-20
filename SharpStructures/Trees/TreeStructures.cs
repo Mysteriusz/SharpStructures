@@ -316,7 +316,7 @@ namespace SharpStructures.Trees
         }
 
         public T Value;
-        public bool IsLeaf => Left == null && Right == null;  
+        public virtual bool IsLeaf => Left == null && Right == null;  
         public virtual TreeNode<T>? Left { get; set; } = null;
         public virtual TreeNode<T>? Right { get; set; } = null;
         public virtual TreeNode<T>? Parent { get; set; } = null;
@@ -390,17 +390,21 @@ namespace SharpStructures.Trees
 
         public RBTNode(T value, RBTNode<T>? left = null, RBTNode<T>? right = null, RBTNode<T>? parent = null, bool isNil = false) : base(value)
         {
-            Left = isNil ? null : left ?? NIL;
-            Right = isNil ? null : right ?? NIL;
-
+            Left = left;
+            Right = right;
             Parent = parent;
+            IsNIL = isNil;
         }
 
-        public bool IsNIL { get; private set; } = false;
+        public bool IsNIL { get; }
         public RBTColor Color { get; set; } = RBTColor.Black;
-        
-        public new RBTNode<T>? Left { get; set; }
-        public new RBTNode<T>? Right { get; set; }
+
+        public override bool IsLeaf => (Left == null && Right == null) || (Left?.IsNIL == true && Right?.IsNIL == true);   
+
+        private RBTNode<T>? _left = null;
+        private RBTNode<T>? _right = null;
+        public new RBTNode<T>? Left { get => IsNIL ? null : _left; set => _left = value; }
+        public new RBTNode<T>? Right { get => IsNIL ? null : _right; set => _right = value; }
         public new RBTNode<T>? Parent { get; set; }
 
         public RBTNode<T>? this[int index]

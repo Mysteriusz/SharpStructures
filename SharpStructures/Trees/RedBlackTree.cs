@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace SharpStructures.Trees
 {
-    /// <summary>
-    /// Indexed Binary Search Tree (IBST) representation that allows efficient searching, insertion, deletion and traversal operations.<br />
-    /// Tree is built using <see cref="BSTNode{T}"/> class.
-    /// </summary>
-    public class BinarySearchTree<T> : IDataTree<T, BSTNode<T>>
+    public class RedBlackTree<T>
     {
-        public BinarySearchTree(BSTNode<T>? root = null, Comparer<T>? comparer = null, TreeTraversalType traversalType = TreeTraversalType.InOrder) 
+        public RedBlackTree(RBTNode<T>? root = null, Comparer<T>? comparer = null, TreeTraversalType traversalType = TreeTraversalType.InOrder)
         {
             if (typeof(IComparable<T>).IsAssignableFrom(typeof(T)) || comparer != null)
                 Comparator = comparer ?? Comparer<T>.Default;
@@ -20,84 +20,39 @@ namespace SharpStructures.Trees
             TraversalType = traversalType;
             Root = root;
         }
-        
+
         // Properties
-        public BSTNode<T>? Root { get; set; }
+        public RBTNode<T>? Root { get; set; }
         public TreeTraversalType TraversalType { get; set; }
         public Comparer<T> Comparator { get; set; }
 
-        public int Height => GetHeightRec(Root);
-        public int LeafCount => GetLeafCountRec(Root);
         public int Count => GetCountRec(Root);
+        public int LeafCount => GetLeafCountRec(Root);
+        public int Height => GetHeightRec(Root);
         public int Levels => Height + 1;
 
         public bool IsValid => IsValidRec(Root);
         public bool IsEmpty => Root == null;
 
         public T this[int index] => GetIndexValue(index);
-
         #region START Main Methods
         public void Add(T value)
         {
-            BSTNode<T> z = new BSTNode<T>(value);
-
-            BSTNode<T>? y = null;
-            BSTNode<T>? x = Root;
-
-            while (x != null)
-            {
-                y = x;
-
-                if (Comparator.Compare(z.Value, x.Value) < 0)
-                    x = x.Left;
-                else
-                    x = x.Right;
-            }
-
-            z.Parent = y;
-
-            if (y == null)
-                Root = z;
-            else if (Comparator.Compare(z.Value, y.Value) < 0)
-                y.Left = z;
-            else
-                y.Right = z;
+            RBTInsert(BSTInsert(value));
         }
         public void AddRange(T[] values)
         {
             for (int i = 0; i < values.Length; i++)
                 Add(values[i]);
         }
+        // TODO
         public void Remove(T value)
         {
-            BSTNode<T>? z = SearchRec(value, Root);
 
-            if (z == null)
-                return;
-
-            if (z.Left == null)
-                ShiftNodes(z, z.Right!);
-            else if (z.Right == null)
-                ShiftNodes(z, z.Left);
-            else
-            {
-                BSTNode<T>? y = Successor(z);
-                if (y!.Parent != z)
-                {
-                    ShiftNodes(y, y.Right!);
-
-                    y.Right = z.Right;
-                    y.Right.Parent = y;
-                }
-                ShiftNodes(z, y);
-                y.Left = z.Left;
-                y.Left.Parent = y;
-            }
         }
         public void RemoveRange(T[] values)
         {
-            for (int i = 0; i < values.Length; i++)
-                Remove(values[i]);
+
         }
         public void Clear()
         {
@@ -109,7 +64,7 @@ namespace SharpStructures.Trees
         }
 
         public bool Contains(T value) => SearchRec(value, Root) != null;
-        public IDataTree<T, BSTNode<T>> Clone() => (IDataTree<T, BSTNode<T>>)this.MemberwiseClone();
+        public IDataTree<T, RBTNode<T>> Clone() => (IDataTree<T, RBTNode<T>>)this.MemberwiseClone();
         #endregion END Main Methods
 
         #region START Traversal Methods
@@ -135,9 +90,9 @@ namespace SharpStructures.Trees
         }
 
         public T? Find(Func<T, bool> predicate) => Find(predicate, Root);
-        public T? Find(Func<T, bool> predicate, BSTNode<T>? node)
+        public T? Find(Func<T, bool> predicate, RBTNode<T>? node)
         {
-            if (node == null)
+            if (node == null || node.IsNIL)
                 return default;
 
             if (predicate(node.Value))
@@ -189,20 +144,20 @@ namespace SharpStructures.Trees
         public IEnumerable<T> PreOrderTraversal() => PreOrderTraversal(Root, []);
         public IEnumerable<T> PostOrderTraversal() => PostOrderTraversal(Root, []);
 
-        private IEnumerable<T> InOrderTraversal(BSTNode<T>? current, List<T> result)
+        private IEnumerable<T> InOrderTraversal(RBTNode<T>? current, List<T> result)
         {
-            if (current == null)
+            if (current == null || current.IsNIL)
                 return result;
 
             InOrderTraversal(current.Left, result);
             result.Add(current.Value);
             InOrderTraversal(current.Right, result);
-            
+
             return result;
         }
-        private IEnumerable<T> PreOrderTraversal(BSTNode<T>? current, List<T> result)
+        private IEnumerable<T> PreOrderTraversal(RBTNode<T>? current, List<T> result)
         {
-            if (current == null)
+            if (current == null || current.IsNIL)
                 return result;
 
             result.Add(current.Value);
@@ -211,9 +166,9 @@ namespace SharpStructures.Trees
 
             return result;
         }
-        private IEnumerable<T> PostOrderTraversal(BSTNode<T>? current, List<T> result)
+        private IEnumerable<T> PostOrderTraversal(RBTNode<T>? current, List<T> result)
         {
-            if (current == null)
+            if (current == null || current.IsNIL)
                 return result;
 
             PostOrderTraversal(current.Left, result);
@@ -223,9 +178,9 @@ namespace SharpStructures.Trees
             return result;
         }
 
-        private IEnumerable<T> InOrderTraversalIndexRange(BSTNode<T>? current, int index, int[] currIndex, int count, List<T> result)
+        private IEnumerable<T> InOrderTraversalIndexRange(RBTNode<T>? current, int index, int[] currIndex, int count, List<T> result)
         {
-            if (current == null || currIndex[0] >= index + count)
+            if (current == null || current.IsNIL || currIndex[0] >= index + count)
                 return result;
 
             InOrderTraversalIndexRange(current.Left, index, currIndex, count, result);
@@ -237,9 +192,9 @@ namespace SharpStructures.Trees
 
             return InOrderTraversalIndexRange(current.Right, index, currIndex, count, result);
         }
-        private IEnumerable<T> PreOrderTraversalIndexRange(BSTNode<T>? current, int index, int[] currIndex, int count, List<T> result)
+        private IEnumerable<T> PreOrderTraversalIndexRange(RBTNode<T>? current, int index, int[] currIndex, int count, List<T> result)
         {
-            if (current == null || currIndex[0] >= index + count)
+            if (current == null || current.IsNIL || currIndex[0] >= index + count)
                 return result;
 
             if (currIndex[0] >= index && currIndex[0] < index + count)
@@ -250,9 +205,9 @@ namespace SharpStructures.Trees
             PreOrderTraversalIndexRange(current.Left, index, currIndex, count, result);
             return PreOrderTraversalIndexRange(current.Right, index, currIndex, count, result);
         }
-        private IEnumerable<T> PostOrderTraversalIndexRange(BSTNode<T>? current, int index, int[] currIndex, int count, List<T> result)
+        private IEnumerable<T> PostOrderTraversalIndexRange(RBTNode<T>? current, int index, int[] currIndex, int count, List<T> result)
         {
-            if (current == null || currIndex[0] >= index + count)
+            if (current == null || current.IsNIL || currIndex[0] >= index + count)
                 return result;
 
             PostOrderTraversalIndexRange(current.Left, index, currIndex, count, result);
@@ -265,12 +220,11 @@ namespace SharpStructures.Trees
 
             return result;
         }
-
         #region START PathFinding
         public IEnumerable<T> DFS(T target) => DFSRec(target, Root, [], []);
-        private IEnumerable<T> DFSRec(T target, BSTNode<T>? node, HashSet<BSTNode<T>> seen, List<T> path)
+        private IEnumerable<T> DFSRec(T target, RBTNode<T>? node, HashSet<RBTNode<T>> seen, List<T> path)
         {
-            if (node == null)
+            if (node == null || node.IsNIL)
                 return path;
 
             if (Comparator.Compare(node.Value, target) == 0)
@@ -296,63 +250,63 @@ namespace SharpStructures.Trees
             return Enumerable.Empty<T>();
         }
         #endregion END PathFinding
-        
+
         #endregion END Traversal Methods
 
         #region START Tree Navigation
         // Generic T Return Types
         public T? Max()
         {
-            BSTNode<T>? max = Max(Root);
+            RBTNode<T>? max = Max(Root);
             return max != null ? max.Value : default;
         }
         public T? Min()
         {
-            BSTNode<T>? min = Min(Root);
+            RBTNode<T>? min = Min(Root);
             return min != null ? min.Value : default;
         }
         public T? Successor()
         {
-            BSTNode<T>? succ = Successor(Root);
+            RBTNode<T>? succ = Successor(Root);
             return succ != null ? succ.Value : default;
         }
         public T? Predecessor()
         {
-            BSTNode<T>? pred = Predecessor(Root);
+            RBTNode<T>? pred = Predecessor(Root);
             return pred != null ? pred.Value : default;
         }
 
         // Main Methods
-        public BSTNode<T>? Max(BSTNode<T>? node)
+        public RBTNode<T>? Max(RBTNode<T>? node)
         {
             if (node == null)
                 return null;
 
-            while (node.Right != null)
+            while (node.Right != null && !node.Right.IsNIL)
                 node = node.Right;
 
             return node;
         }
-        public BSTNode<T>? Min(BSTNode<T>? node)
+        public RBTNode<T>? Min(RBTNode<T>? node)
         {
             if (node == null) return null;
 
-            while (node.Left != null)
+            while (node.Left != null && !node.Left.IsNIL)
                 node = node.Left;
 
             return node;
         }
-        public BSTNode<T>? Successor(BSTNode<T>? node)
+        public RBTNode<T>? Successor(RBTNode<T>? node)
         {
             if (node == null)
                 return null;
 
-            BSTNode<T> x = node;
+            RBTNode<T> x = node;
 
-            if (x.Right != null)
+            if (x.Right != null && !x.Right.IsNIL)
                 return Min(x.Right);
 
-            BSTNode<T>? y = x.Parent;
+            RBTNode<T>? y = x.Parent;
             while (y != null && x == y.Right)
             {
                 x = y;
@@ -361,17 +315,17 @@ namespace SharpStructures.Trees
 
             return y;
         }
-        public BSTNode<T>? Predecessor(BSTNode<T>? node)
+        public RBTNode<T>? Predecessor(RBTNode<T>? node)
         {
             if (node == null)
                 return null;
 
-            BSTNode<T> x = node;
+            RBTNode<T> x = node;
 
-            if (x.Left != null)
+            if (x.Left != null && !x.Left.IsNIL)
                 return Max(x.Left);
 
-            BSTNode<T>? y = x.Parent;
+            RBTNode<T>? y = x.Parent;
             while (y != null && x == y.Left)
             {
                 x = y;
@@ -424,7 +378,7 @@ namespace SharpStructures.Trees
         public Stack<T> ToStack()
         {
             Stack<T> stack = new Stack<T>();
-            
+
             foreach (T value in Traverse())
                 stack.Push(value);
 
@@ -442,9 +396,102 @@ namespace SharpStructures.Trees
         #endregion END Conversion Methods
 
         #region START Helper Methods
-        private BSTNode<T>? SearchRec(T value, BSTNode<T>? curr)
+        private RBTNode<T> BSTInsert(T value)
         {
-            if (curr == null)
+            RBTNode<T>? z = new RBTNode<T>(value); 
+            RBTNode<T>? y = null;
+            RBTNode<T>? x = Root;
+
+            if (x == null)
+                return z;
+
+            while (!x!.IsNIL)
+            {
+                y = x;
+
+                if (Comparator.Compare(z.Value, x.Value) < 0)
+                    x = x.Left;
+                else
+                    x = x.Right;
+            }
+
+            z.Parent = y;
+
+            if (y == null)
+                Root = z;
+            else if (Comparator.Compare(z.Value, y.Value) < 0)
+                y.Left = z;
+            else
+                y.Right = z;
+
+            return z;
+        }
+        private void RBTInsert(RBTNode<T> n)
+        {
+            RBTNode<T>? p = n.Parent;
+
+            RBTNode<T>? g = null;
+            RBTNode<T>? u = null;
+
+            n.Color = RBTColor.Red;
+            n.Left = RBTNode<T>.NIL;
+            n.Right = RBTNode<T>.NIL;
+
+            if (p == null)
+            {
+                Root = n;
+                return;
+            }
+
+            int dir = ChildDir(n);
+
+            while (p != null)
+            {
+                // Case 1
+                if (p.Color == RBTColor.Black)
+                    break;
+
+                // Case 4
+                if ((g = p.Parent) == null)
+                {
+                    p.Color = RBTColor.Black;
+                    break;
+                }
+
+                dir = ChildDir(p);
+                u = g[1 - dir];
+
+                // Case 5/6
+                if (u!.IsNIL || u.Color == RBTColor.Black)
+                {
+                    if (n == p[1 - dir])
+                    {
+                        RotateDir(p, dir);
+                        n = p;
+                        p = g[dir];
+                    }
+
+                    RotateDirRoot(g, 1 - dir);
+                    p!.Color = RBTColor.Black;
+                    g.Color = RBTColor.Red;
+                    break;
+                }
+
+                // Case 2
+                p.Color = RBTColor.Black;
+                u.Color = RBTColor.Black;
+                g.Color = RBTColor.Red;
+                n = g;
+
+                p = n.Parent;
+            }
+
+            Root!.Color = RBTColor.Black;
+        }
+
+        private RBTNode<T>? SearchRec(T value, RBTNode<T>? curr)
+        {
+            if (curr == null || curr.IsNIL)
                 return null;
 
             if (Comparator.Compare(value, curr.Value) == 0)
@@ -454,24 +501,43 @@ namespace SharpStructures.Trees
             else
                 return SearchRec(value, curr.Right);
         }
-        private void ShiftNodes(BSTNode<T> u, BSTNode<T> v)
+        
+        private int ChildDir(RBTNode<T> n)
         {
-            if (u.Parent == null)
-                Root = v;
-            else if (u == u.Parent.Left)
-                u.Parent.Left = v;
-            else
-                u.Parent.Right = v;
+            if (n.Parent == null)
+                return -1;
 
-            if (v != null)
-                v.Parent = u.Parent;
+            return n == n.Parent.Right ? 1 : 0;
         }
-        #endregion END Helper Methods    
+        private RBTNode<T> RotateDir(RBTNode<T> n, int dir) => RotateDirRoot(n, dir);
+        private RBTNode<T> RotateLeft(RBTNode<T> n) => RotateDirRoot(n, 0);
+        private RBTNode<T> RotateRight(RBTNode<T> n) => RotateDirRoot(n, 1);
+        private RBTNode<T> RotateDirRoot(RBTNode<T> p, int dir)
+        {
+            RBTNode<T>? g = p.Parent;
+            RBTNode<T>? s = p[1 - dir];
+            RBTNode<T>? c = null;
+
+            if (s!.IsNIL) throw new InvalidOperationException("Tree structure is invalid or violates Red-Black Tree rules.");
+
+            c = s[dir];
+            p[1 - dir] = c; if (c!.IsNIL) c.Parent = p;
+            s[dir] = p; p.Parent = s;
+            s.Parent = g;
+
+            if (g != null)
+                g[p == g.Right ? 1 : 0] = s;
+            else
+                Root = s;
+
+            return s;
+        }
+        #endregion END Helper Methods
 
         #region START Utils
-        private int GetHeightRec(BSTNode<T>? node, int currH = 0)
+        private int GetHeightRec(RBTNode<T>? node, int currH = 0)
         {
-            if (node == null)
+            if (node == null || node.IsNIL)
                 return 0;
 
             int l = GetHeightRec(node.Left, currH + 1);
@@ -479,9 +545,9 @@ namespace SharpStructures.Trees
 
             return 1 + Math.Max(l, r);
         }
-        private int GetLeafCountRec(BSTNode<T>? node, int currC = 0)
+        private int GetLeafCountRec(RBTNode<T>? node, int currC = 0)
         {
-            if (node == null)
+            if (node == null || node.IsNIL)
                 return 0;
 
             if (node.IsLeaf)
@@ -492,22 +558,19 @@ namespace SharpStructures.Trees
 
             return r + l;
         }
-        private int GetCountRec(BSTNode<T>? node)
+        private int GetCountRec(RBTNode<T>? node)
         {
-            if (node == null)
+            if (node == null || node.IsNIL)
                 return 0;
-            
+
             return 1 + GetCountRec(node.Left) + GetCountRec(node.Right);
         }
-        private bool IsValidRec(BSTNode<T>? node)
+        private bool IsValidRec(RBTNode<T>? node)
         {
-            if (node == null)
+            if (node == null || node.IsNIL)
                 return true;
 
-            if (node.Left != null && Comparator.Compare(Max(node.Left)!.Value, node.Value) >= 0)
-                return false;
-            if (node.Right != null && Comparator.Compare(Max(node.Right)!.Value, node.Value) < 0)
-                return false;
+
 
             return IsValidRec(node.Left) && IsValidRec(node.Right);
         }

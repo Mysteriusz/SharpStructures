@@ -549,28 +549,6 @@ namespace SharpStructures.Trees
                 break;
             }
         }
-        private void BSTRemove(AVLNode<T> z)
-        {
-            if (z!.Left == null)
-                ShiftNodes(z, z.Right!);
-            else if (z.Right == null)
-                ShiftNodes(z, z.Left);
-            else
-            {
-                AVLNode<T>? y = Successor(z);
-
-                if (y!.Parent != z)
-                {
-                    ShiftNodes(y, y.Right!);
-                    y.Right = z.Right;
-                    y.Right.Parent = y;
-                }
-
-                ShiftNodes(z, y);
-                y.Left = z.Left;
-                y.Left.Parent = y;
-            }
-        }
         private AVLNode<T> BSTInsert(T value)
         {
             AVLNode<T> z = new AVLNode<T>(value);
@@ -597,6 +575,28 @@ namespace SharpStructures.Trees
                 y.Right = z;
 
             return z;
+        }
+        private void BSTRemove(AVLNode<T> z)
+        {
+            if (z!.Left == null)
+                ShiftNodes(z, z.Right!);
+            else if (z.Right == null)
+                ShiftNodes(z, z.Left);
+            else
+            {
+                AVLNode<T>? y = Successor(z);
+
+                if (y!.Parent != z)
+                {
+                    ShiftNodes(y, y.Right!);
+                    y.Right = z.Right;
+                    y.Right.Parent = y;
+                }
+
+                ShiftNodes(z, y);
+                y.Left = z.Left;
+                y.Left.Parent = y;
+            }
         }
 
         private void ShiftNodes(AVLNode<T> u, AVLNode<T> v)
