@@ -8,7 +8,11 @@ using System.Threading.Tasks;
 
 namespace SharpStructures.Trees
 {
-    public class RedBlackTree<T>
+    /// <summary>
+    /// Red-Black Tree (RBT) representation that allows efficient searching, insertion, deletion and traversal operations.<br />
+    /// Tree is built using <see cref="RBTNode{T}"/> class.
+    /// </summary>
+    public class RedBlackTree<T> : IDataTree<T, RBTNode<T>>
     {
         public RedBlackTree(RBTNode<T>? root = null, Comparer<T>? comparer = null, TreeTraversalType traversalType = TreeTraversalType.InOrder)
         {
