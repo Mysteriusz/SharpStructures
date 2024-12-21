@@ -415,7 +415,7 @@ namespace SharpStructures.Trees.Utilities
         }
         public int BalanceFactor { get; set; } = 0;
     }
-    public class RBTNode<T> : TreeNode<T, RBTNode<T>>
+    internal class RBTNode<T> : TreeNode<T, RBTNode<T>>
     {
         public RBTNode(T value, RBTNode<T>? left = null, RBTNode<T>? right = null, RBTNode<T>? parent = null) : base(value)
         {
