@@ -27,7 +27,6 @@ namespace SharpStructures.Trees.Utilities
         public virtual int Height => TreeHelper<T, TNode>.GetHeightRec(Root);
         public virtual int LeafCount => TreeHelper<T, TNode>.GetLeafCountRec(Root);
         public virtual int Count => TreeHelper<T, TNode>.GetCountRec(Root);
-        public virtual int Levels => Height + 1;
 
         public virtual bool IsEmpty => Root == null;
         public abstract bool IsValid { get; }

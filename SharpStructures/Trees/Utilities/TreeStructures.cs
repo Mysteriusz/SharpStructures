@@ -40,11 +40,6 @@ namespace SharpStructures.Trees.Utilities
         public int LeafCount { get; }
 
         /// <summary>
-        /// Gets the number of levels in the <see cref="IDataTree{T, TNode}"/>.
-        /// </summary>
-        public int Levels { get; }
-
-        /// <summary>
         /// Gets the total number of nodes in the <see cref="IDataTree{T, TNode}"/>.
         /// </summary>
         public int Count { get; }
