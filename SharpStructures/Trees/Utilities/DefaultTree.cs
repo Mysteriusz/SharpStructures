@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Diagnostics;
 using System.Xml.Linq;
 
 namespace SharpStructures.Trees.Utilities
@@ -70,20 +71,44 @@ namespace SharpStructures.Trees.Utilities
             }
         }
 
-        public virtual T? Find(Func<T, bool> predicate) => Find(predicate, Root);
-        public virtual T? Find(Func<T, bool> predicate, TNode? node)
+        public virtual T? Find(Func<T, bool> predicate)
+        {
+            TNode? found = Find(predicate, Root);
+            return found ? found!.Value : default;
+        }
+        public virtual T? FindLast(Func<T, bool> predicate)
+        {
+            TNode? found = FindLast(predicate, Root);
+            return found ? found!.Value : default;
+        }
+
+        public virtual TNode? Find(Func<T, bool> predicate, TNode? node)
         {
             if (!node)
-                return default;
+                return null;
 
             if (predicate(node!.Value))
-                return node.Value;
+                return node;
 
-            T? leftResult = Find(predicate, node.Left);
-            if (leftResult != null)
-                return leftResult;
+            return Find(predicate, node.Left) ?? Find(predicate, node.Right);
+        }
+        public virtual TNode? FindLast(Func<T, bool> predicate, TNode? node)
+        {
+            if (!node)
+                return null;
 
-            return Find(predicate, node.Right);
+            TNode? right = FindLast(predicate, node!.Right);
+            if (right != null)
+                return right;
+
+            TNode? left = FindLast(predicate, node!.Left);
+            if (left != null)
+                return left;
+
+            if (predicate(node!.Value))
+                return node;
+
+            return null;
         }
 
         public virtual IEnumerable<T> Traverse()
@@ -263,7 +288,7 @@ namespace SharpStructures.Trees.Utilities
         {
             if (!node) return null;
 
-            while (node!.Right != null)
+            while (node!.Right)
                 node = node.Right;
 
             return node;
@@ -272,7 +297,7 @@ namespace SharpStructures.Trees.Utilities
         {
             if (!node) return null;
 
-            while (node!.Left != null)
+            while (node!.Left)
                 node = node.Left;
 
             return node;
@@ -284,11 +309,11 @@ namespace SharpStructures.Trees.Utilities
 
             TNode x = node!;
 
-            if (x.Right != null)
+            if (x.Right)
                 return Min(x.Right);
 
             TNode? y = x.Parent;
-            while (y != null && x == y.Right)
+            while (y && x == y!.Right)
             {
                 x = y;
                 y = y.Parent;
@@ -303,11 +328,11 @@ namespace SharpStructures.Trees.Utilities
 
             TNode x = node!;
 
-            if (x.Left != null)
+            if (x.Left)
                 return Max(x.Left);
 
             TNode? y = x.Parent;
-            while (y != null && x == y.Left)
+            while (y && x == y!.Left)
             {
                 x = y;
                 y = y.Parent;
