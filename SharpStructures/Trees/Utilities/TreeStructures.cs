@@ -111,9 +111,9 @@ namespace SharpStructures.Trees.Utilities
         public T GetIndexValue(int index);
 
         /// <summary>
-        /// Finds successor <see cref="T"/> in the <see cref="IDataTree{T, TNode}"/>.
+        /// Finds maximum <see cref="T"/> in the <see cref="IDataTree{T, TNode}"/>.
         /// </summary>
-        /// <returns>The successor element in the <see cref="IDataTree{T, TNode}"/>.</returns>
+        /// <returns>The maximum element in the <see cref="IDataTree{T, TNode}"/>.</returns>
         public T? Max();
 
         /// <summary>
@@ -133,6 +133,30 @@ namespace SharpStructures.Trees.Utilities
         /// </summary>
         /// <returns>The predecessor element of the root <see cref="TNode.Value"/>.</returns>
         public T? Predecessor();
+
+        /// <summary>
+        /// Finds maximum <see cref="TNode"/> in the <see cref="IDataTree{T, TNode}"/>.
+        /// </summary>
+        /// <returns>The maximum node from the specified <see cref="TNode"/>.</returns>
+        public TNode? Max(TNode? node);
+
+        /// <summary>
+        /// Finds miniumum <see cref="TNode"/> in the <see cref="IDataTree{T, TNode}"/>.
+        /// </summary>
+        /// <returns>The miniumum node from the specified <see cref="TNode"/>.</returns>
+        public TNode? Min(TNode? node);
+
+        /// <summary>
+        /// Finds the successor <see cref="TNode"/> of the root <see cref="TNode{T}"/>.
+        /// </summary>
+        /// <returns>The successor node of the specified <see cref="TNode"/>.</returns>
+        public TNode? Successor(TNode? node);
+
+        /// <summary>
+        /// Finds the predecessor <see cref="TNode"/> of the root <see cref="TNode"/>.
+        /// </summary>
+        /// <returns>The predecessor node of the specified <see cref="TNode"/>.</returns>
+        public TNode? Predecessor(TNode? node);
 
         /// <summary>
         /// Searches for an element that matches specified predicate.
