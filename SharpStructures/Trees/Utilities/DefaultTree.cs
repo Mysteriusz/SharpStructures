@@ -9,10 +9,10 @@ namespace SharpStructures.Trees.Utilities
     {
         public DefaultTree(TNode? root, Comparer<T>? comparator = null, TreeTraversalType traversalType = TreeTraversalType.InOrder)
         {
-            if (typeof(IComparable<T>).IsAssignableFrom(typeof(T)) || comparer != null)
-                Comparator = comparer ?? Comparer<T>.Default;
+            if (typeof(IComparable<T>).IsAssignableFrom(typeof(T)) || comparator != null)
+                Comparator = comparator ?? Comparer<T>.Default;
             else
-                throw new ArgumentNullException(nameof(comparer), "Comparer is required for types that do not implement IComparable.");
+                throw new ArgumentNullException(nameof(comparator), "Comparer is required for types that do not implement IComparable.");
 
             TraversalType = traversalType;
             Root = root;
