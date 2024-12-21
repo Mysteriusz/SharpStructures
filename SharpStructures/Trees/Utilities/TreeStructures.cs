@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 
-namespace SharpStructures.Trees
+namespace SharpStructures.Trees.Utilities
 {
     /// <summary>
     /// Interface for representing tree`s.<br />
     /// Used in:<br />
     /// <see cref="BinarySearchTree{T}"></see><br />
     /// </summary>
-    public interface IDataTree<T, TNode> where TNode : TreeNode<T>
+    public interface IDataTree<T, TNode> where TNode : TreeNode<T, TNode>
     {
         /// <summary>
         /// Gets or sets the root node of the <see cref="IDataTree{T, TNode}"/>.
@@ -153,24 +153,24 @@ namespace SharpStructures.Trees
         public TNode? Max(TNode? node);
 
         /// <summary>
-        /// Finds minimum <see cref="TNode{T}"/> from the specified node.
+        /// Finds minimum <see cref="TNode"/> from the specified node.
         /// </summary>
         /// <param name="node">Node from which the search should start.</param>
-        /// <returns>The found minimum <see cref="TNode{T}"/>, otherwise returns the node.</returns>
+        /// <returns>The found minimum <see cref="TNode"/>, otherwise returns the node.</returns>
         public TNode? Min(TNode? node);
 
         /// <summary>
-        /// Finds successor <see cref="TNode{T}"/> from the specified node.
+        /// Finds successor <see cref="TNode"/> from the specified node.
         /// </summary>
         /// <param name="node">Node from which the search should start.</param>
-        /// <returns>The found successor <see cref="TNode{T}"/>, otherwise returns the node.</returns>
+        /// <returns>The found successor <see cref="TNode"/>, otherwise returns the node.</returns>
         public TNode? Successor(TNode? node);
 
         /// <summary>
-        /// Finds predecessor <see cref="TNode{T}"/> from the specified node.
+        /// Finds predecessor <see cref="TNode"/> from the specified node.
         /// </summary>
         /// <param name="node">Node from which the search should start.</param>
-        /// <returns>The found predecessor <see cref="TNode{T}"/>, otherwise returns the node.</returns>
+        /// <returns>The found predecessor <see cref="TNode"/>, otherwise returns the node.</returns>
         public TNode? Predecessor(TNode? node);
 
         /// <summary>
@@ -283,46 +283,74 @@ namespace SharpStructures.Trees
         /// InOrder tree traversal type
         /// </summary>
         InOrder,
-        
+
         /// <summary>
         /// Pre tree traversal type
         /// </summary>
         PreOrder,
-        
+
         /// <summary>
         /// Post tree traversal type
         /// </summary>
         PostOrder,
     }
-    public enum RBTColor
+    public enum NodeType
     {
+        None,
+        Null,
         Black,
         Red
     }
 
     /// <summary>
-    /// Class representing a tree node holding data to its left and right child (<see cref="TreeNode{T}"/>).<br />
+    /// Class representing a tree node holding data to its left and right child (<see cref="TreeNode{T, TNode}"/>).<br />
     ///
     /// Implements <see cref="IDisposable"/> interface to cleanup the node and all the attached nodes.
     /// </summary>
-    public class TreeNode<T> : IDisposable
+    public abstract class TreeNode<T, TNode> : IDisposable
+        where TNode : TreeNode<T, TNode>
     {
-        public TreeNode(T value, TreeNode<T>? left = null, TreeNode<T>? right = null, TreeNode<T>? parent = null)
+        public TreeNode(T value) { Value = value; }
+
+        public virtual T Value { get; set; }
+        public virtual TNode? Left { get; set; }
+        public virtual TNode? Right { get; set; }
+        public virtual TNode? Parent { get; set; }
+        public virtual TNode? this[int index]
         {
-            Value = value;
-            Left = left;
-            Right = right;
-            Parent = parent;
+            get
+            {
+                if (index == 0)
+                    return Left;
+                else if (index == 1)
+                    return Right;
+                else
+                    throw new IndexOutOfRangeException();
+            }
+            set
+            {
+                if (index == 0)
+                    Left = value;
+                else if (index == 1)
+                    Right = value;
+                else
+                    throw new IndexOutOfRangeException();
+            }
+        }
+        public bool IsLeaf => (Left == null || Left.Type == NodeType.Null) && (Right == null || Right.Type == NodeType.Null);
+
+        public NodeType Type { get; set; } = NodeType.None;
+
+        public static implicit operator bool(TreeNode<T, TNode>? node)
+        {
+            if (node == null || node.Type == NodeType.Null)
+                return false;
+
+            return true;
         }
 
-        public T Value;
-        public virtual bool IsLeaf => Left == null && Right == null;  
-        public virtual TreeNode<T>? Left { get; set; } = null;
-        public virtual TreeNode<T>? Right { get; set; } = null;
-        public virtual TreeNode<T>? Parent { get; set; } = null;
-
         // Disposing
-        private bool _disposed = false; 
+        private bool _disposed = false;
         public void Dispose()
         {
             Dispose(true);
@@ -346,8 +374,12 @@ namespace SharpStructures.Trees
                 _disposed = true;
             }
         }
+        ~TreeNode()
+        {
+            Dispose(false);
+        }
     }
-    public class BSTNode<T> : TreeNode<T>
+    public class BSTNode<T> : TreeNode<T, BSTNode<T>>
     {
         public BSTNode(T value, BSTNode<T>? left = null, BSTNode<T>? right = null, BSTNode<T>? parent = null) : base(value)
         {
@@ -355,17 +387,8 @@ namespace SharpStructures.Trees
             Right = right;
             Parent = parent;
         }
-
-        public new BSTNode<T>? Left { get; set; } = null;
-        public new BSTNode<T>? Right { get; set; } = null;
-        public new BSTNode<T>? Parent { get; set; } = null;
-
-        public TreeNode<T> ToTreeNode()
-        {
-            return new TreeNode<T>(Value, Left?.ToTreeNode(), Right?.ToTreeNode(), Parent?.ToTreeNode());
-        }
     }
-    public class AVLNode<T> : TreeNode<T>
+    public class AVLNode<T> : TreeNode<T, AVLNode<T>>
     {
         public AVLNode(T value, AVLNode<T>? left = null, AVLNode<T>? right = null, AVLNode<T>? parent = null) : base(value)
         {
@@ -373,65 +396,17 @@ namespace SharpStructures.Trees
             Right = right;
             Parent = parent;
         }
-
         public int BalanceFactor { get; set; } = 0;
-        public new AVLNode<T>? Left { get; set; } = null;
-        public new AVLNode<T>? Right { get; set; } = null;
-        public new AVLNode<T>? Parent { get; set; } = null;
-
-        public TreeNode<T> ToTreeNode()
-        {
-            return new TreeNode<T>(Value, Left?.ToTreeNode(), Right?.ToTreeNode(), Parent?.ToTreeNode());
-        }
     }
-    public class RBTNode<T> : TreeNode<T>
+    public class RBTNode<T> : TreeNode<T, RBTNode<T>>
     {
-        public static RBTNode<T> NIL = new RBTNode<T>(default!, isNil: true);
-
-        public RBTNode(T value, RBTNode<T>? left = null, RBTNode<T>? right = null, RBTNode<T>? parent = null, bool isNil = false) : base(value)
+        public RBTNode(T value, RBTNode<T>? left = null, RBTNode<T>? right = null, RBTNode<T>? parent = null) : base(value)
         {
             Left = left;
             Right = right;
             Parent = parent;
-            IsNIL = isNil;
+            Type = NodeType.Black;
         }
-
-        public bool IsNIL { get; }
-        public RBTColor Color { get; set; } = RBTColor.Black;
-
-        public override bool IsLeaf => (Left == null && Right == null) || (Left?.IsNIL == true && Right?.IsNIL == true);   
-
-        private RBTNode<T>? _left = null;
-        private RBTNode<T>? _right = null;
-        public new RBTNode<T>? Left { get => IsNIL ? null : _left; set => _left = value; }
-        public new RBTNode<T>? Right { get => IsNIL ? null : _right; set => _right = value; }
-        public new RBTNode<T>? Parent { get; set; }
-
-        public RBTNode<T>? this[int index]
-        {
-            get
-            {
-                if (index == 0)
-                    return Left;
-                else if (index == 1)
-                    return Right;
-                else
-                    throw new IndexOutOfRangeException();
-            }
-            set
-            {
-                if (index == 0)
-                    Left = value;
-                else if (index == 1)
-                    Right = value;
-                else
-                    throw new IndexOutOfRangeException();
-            }
-        }
-
-        public TreeNode<T> ToTreeNode()
-        {
-            return new TreeNode<T>(Value, Left?.ToTreeNode(), Right?.ToTreeNode(), Parent?.ToTreeNode());
-        }
+        public static RBTNode<T> NIL = new RBTNode<T>(default!) { Type = NodeType.Null };
     }
 }
