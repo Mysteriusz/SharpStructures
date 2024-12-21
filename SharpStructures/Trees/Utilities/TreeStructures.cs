@@ -9,7 +9,8 @@ namespace SharpStructures.Trees.Utilities
     /// Used in:<br />
     /// <see cref="BinarySearchTree{T}"></see><br />
     /// </summary>
-    public interface IDataTree<T, TNode> where TNode : TreeNode<T, TNode>
+    public interface IDataTree<T, TNode> 
+        where TNode : TreeNode<T, TNode>
     {
         /// <summary>
         /// Gets or sets the root node of the <see cref="IDataTree{T, TNode}"/>.
@@ -136,9 +137,30 @@ namespace SharpStructures.Trees.Utilities
         /// <summary>
         /// Searches for an element that matches specified predicate.
         /// </summary>
-        /// <param name="predicate">The function used    to evaluate each element.</param>
+        /// <param name="predicate">The function used to evaluate each element.</param>
         /// <returns>The element that matches the predicate, or null if not found.</returns>
         public T? Find(Func<T, bool> predicate);
+
+        /// <summary>
+        /// Searches for the last element that matches specified predicate.
+        /// </summary>
+        /// <param name="predicate">The function used to evaluate each element.</param>
+        /// <returns>The last element that matches the predicate, or null if not found.</returns>
+        public T? FindLast(Func<T, bool> predicate);
+
+        /// <summary>
+        /// Searches for an node that matches specified predicate.
+        /// </summary>
+        /// <param name="predicate">The function used to evaluate each node.</param>
+        /// <returns>The node that matches the predicate, or null if not found.</returns>
+        public TNode? Find(Func<T, bool> predicate, TNode? node);
+
+        /// <summary>
+        /// Searches for the last node that matches specified predicate.
+        /// </summary>
+        /// <param name="predicate">The function used to evaluate each node.</param>
+        /// <returns>The last node that matches the predicate, or null if not found.</returns>
+        public TNode? FindLast(Func<T, bool> predicate, TNode? node);
 
         /// <summary>
         /// Finds successor <see cref="TNode"/> from the specified node.

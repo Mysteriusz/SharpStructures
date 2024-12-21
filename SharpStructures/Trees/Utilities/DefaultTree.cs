@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Diagnostics;
-using System.Xml.Linq;
 
 namespace SharpStructures.Trees.Utilities
 {
     public abstract class DefaultTree<T, TNode> : IDataTree<T, TNode>
         where TNode : TreeNode<T, TNode>
     {
-        public DefaultTree(TNode? root, Comparer<T>? comparer = null, TreeTraversalType traversalType = TreeTraversalType.InOrder)
+        public DefaultTree(TNode? root, Comparer<T>? comparator = null, TreeTraversalType traversalType = TreeTraversalType.InOrder)
         {
             if (typeof(IComparable<T>).IsAssignableFrom(typeof(T)) || comparer != null)
                 Comparator = comparer ?? Comparer<T>.Default;
